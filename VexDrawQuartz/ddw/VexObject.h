@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface VexObject : NSObject
-{
-}
 
 @property (nonatomic, retain) NSMutableArray *strokes;
 @property (nonatomic, retain) NSMutableArray *fills;

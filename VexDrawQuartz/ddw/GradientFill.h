@@ -27,13 +27,11 @@ typedef struct GradientLine
 
 
 @interface GradientFill : Fill
-{
-    GradientType type;
-    GradientLine line;
-}
 
 -(id) initWithGradientType:(GradientType) type gradientLine:(GradientLine) line;
 
 @property (nonatomic, retain) NSMutableArray *stops;
+@property (nonatomic, assign) GradientType type;
+@property (nonatomic, assign) GradientLine line;
 
 @end

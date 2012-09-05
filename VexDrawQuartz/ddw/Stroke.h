@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface Stroke : NSObject
-{
-}
 
-@property CGColorRef color;
-@property float lineWidth;
+@property (nonatomic, readonly) CGColorRef color;
+@property (readwrite) float lineWidth;
 
 -(id) initWithColor:(CGColorRef)color lineWidth:(float)lineWidth;
 

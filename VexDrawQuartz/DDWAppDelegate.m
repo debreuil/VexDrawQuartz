@@ -34,6 +34,8 @@
     VexObject *vo = [[VexObject alloc] init];
     VexDrawBinaryReader *br = [[VexDrawBinaryReader alloc] initWithData:data usingVexObject:vo];
     
+    br = nil;
+    
                                                 
     return YES;
 }

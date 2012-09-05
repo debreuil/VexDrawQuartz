@@ -16,7 +16,20 @@
 #import "Symbol.h"
 
 
+@interface VexDrawBinaryReader()
+{    
+    const unsigned char *rawData;
+	unsigned int index;
+	unsigned int bit;
+	unsigned int dataLen;
+    
+	unsigned int fillIndexNBits;
+	unsigned int strokeIndexNBits;	
+}
+@end
+
 @implementation VexDrawBinaryReader
+
 
 int const TWIPS = 32;
 
@@ -123,10 +136,9 @@ CGColorSpaceRef colorSpace;
         int count = [self readNBits:11];        
         for (int stops = 0; stops < count; stops++)
         {
-            CGColorRef col = [self readColor:colorNBits];
+            CGColorRef col = [self readAndCreateColor:colorNBits];
             float ratio = [self readNBits:ratioNBits] / 255;            
             GradientStop *stop = [[GradientStop alloc] initWithColor:col ratio: ratio];
-            CFRelease(col);
             
             [[gradient stops] addObject:stop];
         }	
@@ -145,9 +157,9 @@ CGColorSpaceRef colorSpace;
     int count = [self readNBits:11];
     for (int i = 0; i < count; i++)
     {
-        CGColorRef col = [self readColor:nBits];
+        CGColorRef col = [self readAndCreateColor:nBits];
         SolidFill *fill = [[SolidFill alloc] initWithColor:col];
-        CFRelease(col);
+
         [[vo fills] addObject:fill];
     }
     [self flushBits];
@@ -162,10 +174,10 @@ CGColorSpaceRef colorSpace;
     int count = [self readNBits:11];
     for (int i = 0; i < count; i++)
     {
-        CGColorRef col = [self readColor:colorNBits];
+        CGColorRef col = [self readAndCreateColor:colorNBits];
         float lw = [self readNBits:lineWidthNBits] / TWIPS;
         Stroke *stroke = [[Stroke alloc] initWithColor:col lineWidth:lw];
-        CFRelease(col);
+
         [[vo strokes] addObject:stroke];
     }		
     
@@ -264,7 +276,7 @@ CGColorSpaceRef colorSpace;
     return result;
 }
 
--(CGColorRef) readColor:(int) nBits
+-(CGColorRef) readAndCreateColor:(int) nBits
 {
     unsigned int afrgb = [self readNBits:nBits];
     unsigned int a = 0xFF - ((afrgb & 0xFF000000) >> 24);

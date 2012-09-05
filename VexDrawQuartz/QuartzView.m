@@ -55,8 +55,7 @@ UIImage *myImage;
     CGColorSpaceRelease(colorSpaceRef);
     CGColorRelease(color);
     CGImageRelease(cgImage);
-    CGContextRelease(context);
-    CGColorSpaceRelease(colorSpaceRef);     
+    CGContextRelease(context);    
 }
 
 -(void)drawRect:(CGRect)rect

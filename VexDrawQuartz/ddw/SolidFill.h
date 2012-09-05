@@ -10,10 +10,8 @@
 #import "Fill.h"
 
 @interface SolidFill : Fill
-{    
-}
 
-@property CGColorRef color;
+@property (nonatomic, readonly) CGColorRef color;
 
 -(id) initWithColor:(CGColorRef)color;
 @end

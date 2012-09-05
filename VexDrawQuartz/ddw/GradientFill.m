@@ -14,6 +14,8 @@
 @implementation GradientFill
 
 @synthesize stops = _stops;
+@synthesize line = _line;
+@synthesize type = _type;
 
 -(id) init
 {
@@ -30,15 +32,15 @@
     self = [self init];
     if(self)
     {
-        type = theType;
-        line = theLine;
+        _type = theType;
+        _line = theLine;
     }
     return self;
 }
 
 - (NSString *)description
 {
-    NSString *s = [NSString stringWithFormat:@"grad: %d stops: %d", type, self.stops.count ];
+    NSString *s = [NSString stringWithFormat:@"grad: %d stops: %d", self.type, self.stops.count ];
     if(self.stops.count > 0)
     {
         GradientStop *stop = [self.stops objectAtIndex:0];
