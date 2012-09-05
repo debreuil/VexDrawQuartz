@@ -1,0 +1,388 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84A156D015F129B900BDD9FE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A156CF15F129B900BDD9FE /* UIKit.framework */; };
+		84A156D215F129B900BDD9FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A156D115F129B900BDD9FE /* Foundation.framework */; };
+		84A156D415F129B900BDD9FE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A156D315F129B900BDD9FE /* CoreGraphics.framework */; };
+		84A156DA15F129B900BDD9FE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84A156D815F129B900BDD9FE /* InfoPlist.strings */; };
+		84A156DC15F129B900BDD9FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A156DB15F129B900BDD9FE /* main.m */; };
+		84A156E015F129B900BDD9FE /* DDWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A156DF15F129B900BDD9FE /* DDWAppDelegate.m */; };
+		84A156FA15F1708900BDD9FE /* QuartzView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A156F915F1708900BDD9FE /* QuartzView.m */; };
+		84A156FE15F172A700BDD9FE /* TestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A156FC15F172A700BDD9FE /* TestController.m */; };
+		84A156FF15F172A700BDD9FE /* TestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A156FD15F172A700BDD9FE /* TestController.xib */; };
+		84FE83B315F41F9600BCD7B8 /* testData.dat in Resources */ = {isa = PBXBuildFile; fileRef = 84FE83B215F41E4E00BCD7B8 /* testData.dat */; };
+		84FE83C315F4231300BCD7B8 /* GradientFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83C215F4231300BCD7B8 /* GradientFill.m */; };
+		84FE83C615F4232300BCD7B8 /* Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83C515F4232300BCD7B8 /* Instance.m */; };
+		84FE83CC15F4234300BCD7B8 /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83CB15F4234300BCD7B8 /* Segment.m */; };
+		84FE83CF15F4237200BCD7B8 /* SegmentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83CE15F4237200BCD7B8 /* SegmentType.m */; };
+		84FE83D215F4238100BCD7B8 /* Shape.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83D115F4238100BCD7B8 /* Shape.m */; };
+		84FE83D515F4239200BCD7B8 /* SolidFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83D415F4239100BCD7B8 /* SolidFill.m */; };
+		84FE83D815F423A300BCD7B8 /* Stroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83D715F423A300BCD7B8 /* Stroke.m */; };
+		84FE83DB15F423B600BCD7B8 /* Symbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83DA15F423B600BCD7B8 /* Symbol.m */; };
+		84FE83DE15F423C600BCD7B8 /* Timeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83DD15F423C500BCD7B8 /* Timeline.m */; };
+		84FE83E415F423EE00BCD7B8 /* VexObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83E315F423EE00BCD7B8 /* VexObject.m */; };
+		84FE83E715F424B400BCD7B8 /* Fill.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83E615F424B400BCD7B8 /* Fill.m */; };
+		84FE83EC15F4250400BCD7B8 /* Definition.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83EB15F4250400BCD7B8 /* Definition.m */; };
+		84FE83EF15F4719200BCD7B8 /* VexDrawBinaryReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83EE15F4719200BCD7B8 /* VexDrawBinaryReader.m */; };
+		84FE83F515F6B3F200BCD7B8 /* GradientStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83F415F6B3F100BCD7B8 /* GradientStop.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		84A156CB15F129B900BDD9FE /* VexDrawQuartz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VexDrawQuartz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84A156CF15F129B900BDD9FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		84A156D115F129B900BDD9FE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		84A156D315F129B900BDD9FE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		84A156D715F129B900BDD9FE /* VexDrawQuartz-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VexDrawQuartz-Info.plist"; sourceTree = "<group>"; };
+		84A156D915F129B900BDD9FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84A156DB15F129B900BDD9FE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84A156DD15F129B900BDD9FE /* VexDrawQuartz-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VexDrawQuartz-Prefix.pch"; sourceTree = "<group>"; };
+		84A156DE15F129B900BDD9FE /* DDWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDWAppDelegate.h; sourceTree = "<group>"; };
+		84A156DF15F129B900BDD9FE /* DDWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDWAppDelegate.m; sourceTree = "<group>"; };
+		84A156F815F1708900BDD9FE /* QuartzView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzView.h; sourceTree = "<group>"; };
+		84A156F915F1708900BDD9FE /* QuartzView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzView.m; sourceTree = "<group>"; };
+		84A156FB15F172A700BDD9FE /* TestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestController.h; sourceTree = "<group>"; };
+		84A156FC15F172A700BDD9FE /* TestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestController.m; sourceTree = "<group>"; };
+		84A156FD15F172A700BDD9FE /* TestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestController.xib; sourceTree = "<group>"; };
+		84FE83B215F41E4E00BCD7B8 /* testData.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = testData.dat; sourceTree = "<group>"; };
+		84FE83C115F4231300BCD7B8 /* GradientFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientFill.h; path = ddw/GradientFill.h; sourceTree = "<group>"; };
+		84FE83C215F4231300BCD7B8 /* GradientFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientFill.m; path = ddw/GradientFill.m; sourceTree = "<group>"; };
+		84FE83C415F4232300BCD7B8 /* Instance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Instance.h; path = ddw/Instance.h; sourceTree = "<group>"; };
+		84FE83C515F4232300BCD7B8 /* Instance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Instance.m; path = ddw/Instance.m; sourceTree = "<group>"; };
+		84FE83CA15F4234300BCD7B8 /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Segment.h; path = ddw/Segment.h; sourceTree = "<group>"; };
+		84FE83CB15F4234300BCD7B8 /* Segment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Segment.m; path = ddw/Segment.m; sourceTree = "<group>"; };
+		84FE83CD15F4237200BCD7B8 /* SegmentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentType.h; path = ddw/SegmentType.h; sourceTree = "<group>"; };
+		84FE83CE15F4237200BCD7B8 /* SegmentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentType.m; path = ddw/SegmentType.m; sourceTree = "<group>"; };
+		84FE83D015F4238100BCD7B8 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shape.h; path = ddw/Shape.h; sourceTree = "<group>"; };
+		84FE83D115F4238100BCD7B8 /* Shape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shape.m; path = ddw/Shape.m; sourceTree = "<group>"; };
+		84FE83D315F4239100BCD7B8 /* SolidFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SolidFill.h; path = ddw/SolidFill.h; sourceTree = "<group>"; };
+		84FE83D415F4239100BCD7B8 /* SolidFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SolidFill.m; path = ddw/SolidFill.m; sourceTree = "<group>"; };
+		84FE83D615F423A300BCD7B8 /* Stroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stroke.h; path = ddw/Stroke.h; sourceTree = "<group>"; };
+		84FE83D715F423A300BCD7B8 /* Stroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stroke.m; path = ddw/Stroke.m; sourceTree = "<group>"; };
+		84FE83D915F423B600BCD7B8 /* Symbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Symbol.h; path = ddw/Symbol.h; sourceTree = "<group>"; };
+		84FE83DA15F423B600BCD7B8 /* Symbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Symbol.m; path = ddw/Symbol.m; sourceTree = "<group>"; };
+		84FE83DC15F423C500BCD7B8 /* Timeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timeline.h; path = ddw/Timeline.h; sourceTree = "<group>"; };
+		84FE83DD15F423C500BCD7B8 /* Timeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Timeline.m; path = ddw/Timeline.m; sourceTree = "<group>"; };
+		84FE83DF15F423DB00BCD7B8 /* VexDrawTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VexDrawTag.h; path = ddw/VexDrawTag.h; sourceTree = "<group>"; };
+		84FE83E215F423EE00BCD7B8 /* VexObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VexObject.h; path = ddw/VexObject.h; sourceTree = "<group>"; };
+		84FE83E315F423EE00BCD7B8 /* VexObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VexObject.m; path = ddw/VexObject.m; sourceTree = "<group>"; };
+		84FE83E515F424B300BCD7B8 /* Fill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fill.h; path = ddw/Fill.h; sourceTree = "<group>"; };
+		84FE83E615F424B400BCD7B8 /* Fill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fill.m; path = ddw/Fill.m; sourceTree = "<group>"; };
+		84FE83EA15F4250400BCD7B8 /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Definition.h; path = ddw/Definition.h; sourceTree = "<group>"; };
+		84FE83EB15F4250400BCD7B8 /* Definition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Definition.m; path = ddw/Definition.m; sourceTree = "<group>"; };
+		84FE83ED15F4719200BCD7B8 /* VexDrawBinaryReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VexDrawBinaryReader.h; path = ddw/VexDrawBinaryReader.h; sourceTree = "<group>"; };
+		84FE83EE15F4719200BCD7B8 /* VexDrawBinaryReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VexDrawBinaryReader.m; path = ddw/VexDrawBinaryReader.m; sourceTree = "<group>"; };
+		84FE83F315F6B3F000BCD7B8 /* GradientStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientStop.h; path = ddw/GradientStop.h; sourceTree = "<group>"; };
+		84FE83F415F6B3F100BCD7B8 /* GradientStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientStop.m; path = ddw/GradientStop.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84A156C815F129B800BDD9FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A156D015F129B900BDD9FE /* UIKit.framework in Frameworks */,
+				84A156D215F129B900BDD9FE /* Foundation.framework in Frameworks */,
+				84A156D415F129B900BDD9FE /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84A156C015F129B800BDD9FE = {
+			isa = PBXGroup;
+			children = (
+				84A156D515F129B900BDD9FE /* VexDrawQuartz */,
+				84A156CE15F129B900BDD9FE /* Frameworks */,
+				84A156CC15F129B900BDD9FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84A156CC15F129B900BDD9FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84A156CB15F129B900BDD9FE /* VexDrawQuartz.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84A156CE15F129B900BDD9FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84A156CF15F129B900BDD9FE /* UIKit.framework */,
+				84A156D115F129B900BDD9FE /* Foundation.framework */,
+				84A156D315F129B900BDD9FE /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84A156D515F129B900BDD9FE /* VexDrawQuartz */ = {
+			isa = PBXGroup;
+			children = (
+				84FE83B415F4217A00BCD7B8 /* ddw */,
+				84FE83B115F41DB000BCD7B8 /* data */,
+				84A156DE15F129B900BDD9FE /* DDWAppDelegate.h */,
+				84A156DF15F129B900BDD9FE /* DDWAppDelegate.m */,
+				84A156D615F129B900BDD9FE /* Supporting Files */,
+				84A156F815F1708900BDD9FE /* QuartzView.h */,
+				84A156F915F1708900BDD9FE /* QuartzView.m */,
+				84A156FB15F172A700BDD9FE /* TestController.h */,
+				84A156FC15F172A700BDD9FE /* TestController.m */,
+				84A156FD15F172A700BDD9FE /* TestController.xib */,
+			);
+			path = VexDrawQuartz;
+			sourceTree = "<group>";
+		};
+		84A156D615F129B900BDD9FE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84A156D715F129B900BDD9FE /* VexDrawQuartz-Info.plist */,
+				84A156D815F129B900BDD9FE /* InfoPlist.strings */,
+				84A156DB15F129B900BDD9FE /* main.m */,
+				84A156DD15F129B900BDD9FE /* VexDrawQuartz-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84FE83B115F41DB000BCD7B8 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				84FE83B215F41E4E00BCD7B8 /* testData.dat */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
+		84FE83B415F4217A00BCD7B8 /* ddw */ = {
+			isa = PBXGroup;
+			children = (
+				84FE83EA15F4250400BCD7B8 /* Definition.h */,
+				84FE83EB15F4250400BCD7B8 /* Definition.m */,
+				84FE83E515F424B300BCD7B8 /* Fill.h */,
+				84FE83E615F424B400BCD7B8 /* Fill.m */,
+				84FE83C115F4231300BCD7B8 /* GradientFill.h */,
+				84FE83C215F4231300BCD7B8 /* GradientFill.m */,
+				84FE83C415F4232300BCD7B8 /* Instance.h */,
+				84FE83C515F4232300BCD7B8 /* Instance.m */,
+				84FE83CA15F4234300BCD7B8 /* Segment.h */,
+				84FE83CB15F4234300BCD7B8 /* Segment.m */,
+				84FE83CD15F4237200BCD7B8 /* SegmentType.h */,
+				84FE83CE15F4237200BCD7B8 /* SegmentType.m */,
+				84FE83D015F4238100BCD7B8 /* Shape.h */,
+				84FE83D115F4238100BCD7B8 /* Shape.m */,
+				84FE83D315F4239100BCD7B8 /* SolidFill.h */,
+				84FE83D415F4239100BCD7B8 /* SolidFill.m */,
+				84FE83D615F423A300BCD7B8 /* Stroke.h */,
+				84FE83D715F423A300BCD7B8 /* Stroke.m */,
+				84FE83D915F423B600BCD7B8 /* Symbol.h */,
+				84FE83DA15F423B600BCD7B8 /* Symbol.m */,
+				84FE83DC15F423C500BCD7B8 /* Timeline.h */,
+				84FE83DD15F423C500BCD7B8 /* Timeline.m */,
+				84FE83DF15F423DB00BCD7B8 /* VexDrawTag.h */,
+				84FE83E215F423EE00BCD7B8 /* VexObject.h */,
+				84FE83E315F423EE00BCD7B8 /* VexObject.m */,
+				84FE83ED15F4719200BCD7B8 /* VexDrawBinaryReader.h */,
+				84FE83EE15F4719200BCD7B8 /* VexDrawBinaryReader.m */,
+				84FE83F315F6B3F000BCD7B8 /* GradientStop.h */,
+				84FE83F415F6B3F100BCD7B8 /* GradientStop.m */,
+			);
+			name = ddw;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84A156CA15F129B800BDD9FE /* VexDrawQuartz */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84A156E315F129B900BDD9FE /* Build configuration list for PBXNativeTarget "VexDrawQuartz" */;
+			buildPhases = (
+				84A156C715F129B800BDD9FE /* Sources */,
+				84A156C815F129B800BDD9FE /* Frameworks */,
+				84A156C915F129B800BDD9FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VexDrawQuartz;
+			productName = VexDrawQuartz;
+			productReference = 84A156CB15F129B900BDD9FE /* VexDrawQuartz.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84A156C215F129B800BDD9FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+			};
+			buildConfigurationList = 84A156C515F129B800BDD9FE /* Build configuration list for PBXProject "VexDrawQuartz" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 84A156C015F129B800BDD9FE;
+			productRefGroup = 84A156CC15F129B900BDD9FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84A156CA15F129B800BDD9FE /* VexDrawQuartz */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84A156C915F129B800BDD9FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A156DA15F129B900BDD9FE /* InfoPlist.strings in Resources */,
+				84A156FF15F172A700BDD9FE /* TestController.xib in Resources */,
+				84FE83B315F41F9600BCD7B8 /* testData.dat in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84A156C715F129B800BDD9FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A156DC15F129B900BDD9FE /* main.m in Sources */,
+				84A156E015F129B900BDD9FE /* DDWAppDelegate.m in Sources */,
+				84A156FA15F1708900BDD9FE /* QuartzView.m in Sources */,
+				84A156FE15F172A700BDD9FE /* TestController.m in Sources */,
+				84FE83C315F4231300BCD7B8 /* GradientFill.m in Sources */,
+				84FE83C615F4232300BCD7B8 /* Instance.m in Sources */,
+				84FE83CC15F4234300BCD7B8 /* Segment.m in Sources */,
+				84FE83CF15F4237200BCD7B8 /* SegmentType.m in Sources */,
+				84FE83D215F4238100BCD7B8 /* Shape.m in Sources */,
+				84FE83D515F4239200BCD7B8 /* SolidFill.m in Sources */,
+				84FE83D815F423A300BCD7B8 /* Stroke.m in Sources */,
+				84FE83DB15F423B600BCD7B8 /* Symbol.m in Sources */,
+				84FE83DE15F423C600BCD7B8 /* Timeline.m in Sources */,
+				84FE83E415F423EE00BCD7B8 /* VexObject.m in Sources */,
+				84FE83E715F424B400BCD7B8 /* Fill.m in Sources */,
+				84FE83EC15F4250400BCD7B8 /* Definition.m in Sources */,
+				84FE83EF15F4719200BCD7B8 /* VexDrawBinaryReader.m in Sources */,
+				84FE83F515F6B3F200BCD7B8 /* GradientStop.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		84A156D815F129B900BDD9FE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84A156D915F129B900BDD9FE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84A156E115F129B900BDD9FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84A156E215F129B900BDD9FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84A156E415F129B900BDD9FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VexDrawQuartz/VexDrawQuartz-Prefix.pch";
+				INFOPLIST_FILE = "VexDrawQuartz/VexDrawQuartz-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		84A156E515F129B900BDD9FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VexDrawQuartz/VexDrawQuartz-Prefix.pch";
+				INFOPLIST_FILE = "VexDrawQuartz/VexDrawQuartz-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84A156C515F129B800BDD9FE /* Build configuration list for PBXProject "VexDrawQuartz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84A156E115F129B900BDD9FE /* Debug */,
+				84A156E215F129B900BDD9FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84A156E315F129B900BDD9FE /* Build configuration list for PBXNativeTarget "VexDrawQuartz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84A156E415F129B900BDD9FE /* Debug */,
+				84A156E515F129B900BDD9FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84A156C215F129B800BDD9FE /* Project object */;
+}
