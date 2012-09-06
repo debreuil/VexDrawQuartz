@@ -12,6 +12,6 @@
 
 @property (nonatomic, retain) NSMutableArray *strokes;
 @property (nonatomic, retain) NSMutableArray *fills;
-@property (nonatomic, retain) NSMutableArray *definitions;
+@property (nonatomic, retain) NSMutableDictionary *definitions;
 
 @end

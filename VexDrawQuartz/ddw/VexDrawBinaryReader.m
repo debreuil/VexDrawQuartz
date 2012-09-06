@@ -86,14 +86,14 @@ CGColorSpaceRef colorSpace;
             case SymbolDefinition:
             {
                 Symbol *symbol = [self parseSymbol:vo];
-                [[vo definitions] addObject:symbol];
+                [[vo definitions] setObject:symbol forKey:symbol.definitionId];
                 break;
             }
                 
             case TimelineDefinition:
             {
                 Timeline *tl = [self parseTimeline:vo];
-                [[vo definitions] addObject:tl];
+                [[vo definitions] setObject:tl forKey:tl.definitionId];
                 break;
             }
 
@@ -112,7 +112,7 @@ CGColorSpaceRef colorSpace;
     Timeline *result = [[Timeline alloc] init];
     
     
-    result.definitionId = [self readNBits:32];
+    result.definitionId = [NSNumber numberWithInt:[self readNBits:32]];
     result.bounds = [self readNBitRect];
     
     int instancesCount = [self readNBits:11];
@@ -120,7 +120,7 @@ CGColorSpaceRef colorSpace;
     {
         // defid32,hasVals[7:bool], x?,y?,scaleX?, scaleY?, rotation?, shear?, "name"?
         Instance *inst = [[Instance alloc] init];
-        inst.definitionId = [self readNBits:32];
+        inst.definitionId = [NSNumber numberWithInt:[self readNBits:32]];
         
         BOOL hasX = [self readBit];
         BOOL hasY = [self readBit];
@@ -169,7 +169,6 @@ CGColorSpaceRef colorSpace;
         }
         
         [result.instances addObject:inst];
-        NSLog(@"inst: %@", inst);
     }
     
     [self flushBits];
@@ -181,7 +180,7 @@ CGColorSpaceRef colorSpace;
 {
     Symbol *result = [[Symbol alloc] init];
     
-    result.definitionId = [self readNBits:32];
+    result.definitionId = [NSNumber numberWithInt:[self readNBits:32]];
     
     // todo: name
     

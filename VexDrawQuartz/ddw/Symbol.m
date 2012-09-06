@@ -23,4 +23,9 @@
     return self;    
 }
 
++(void) drawSymbol:(Symbol *)symbol withMetricsFrom:(Instance *)inst withVexObject:(VexObject *)vo
+{
+    
+}
+
 @end

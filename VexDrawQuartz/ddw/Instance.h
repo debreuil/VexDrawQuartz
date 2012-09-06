@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VexObject.h"
 
 @interface Instance : NSObject
 
-@property (nonatomic, assign) int definitionId;
+@property (nonatomic, retain) NSNumber *definitionId;
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, assign) int instanceId;
+@property (nonatomic, retain) NSNumber *instanceId;
 
 @property (nonatomic, assign) float x;
 @property (nonatomic, assign) float y;
@@ -25,5 +26,6 @@
 @property (nonatomic, assign) BOOL hasRotation;
 @property (nonatomic, assign) BOOL hasShear;
 
++(void) drawInstance:(Instance *) inst withVexObject:(VexObject *)vo;
 
 @end

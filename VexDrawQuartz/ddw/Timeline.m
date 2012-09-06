@@ -7,6 +7,7 @@
 //
 
 #import "Timeline.h"
+#import "Instance.h"
 
 @implementation Timeline
 
@@ -21,6 +22,14 @@
         _instances = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
++(void) drawTimeline:(Timeline *) tl withVexObject:(VexObject *)vo
+{    
+    for(Instance *inst in tl.instances)
+    {
+        //Instance.drawInstance(inst, vo);
+    }
 }
 
 @end

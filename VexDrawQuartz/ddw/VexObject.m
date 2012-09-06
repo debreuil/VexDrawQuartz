@@ -7,6 +7,7 @@
 //
 
 #import "VexObject.h"
+#import "Timeline.h"
 
 @implementation VexObject
 
@@ -21,16 +22,20 @@
     {
         _strokes = [[NSMutableArray alloc] init];
         _fills = [[NSMutableArray alloc] init];
-        _definitions = [[NSMutableArray alloc] init];
+        _definitions = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
--(void)dealloc
+
+-(void) drawTimelineIndex:(NSNumber *) index
 {
-    [_strokes removeAllObjects];
-    [_fills removeAllObjects];
-    [_definitions removeAllObjects];
+    Definition *tlDef = [self.definitions objectForKey:index];
+    if(tlDef != nil && [tlDef isKindOfClass:[Timeline class]])
+    {
+        Timeline *tl = (Timeline *)tlDef;
+        [Timeline drawTimeline:tl withVexObject:self];
+    }
 }
 
 @end
