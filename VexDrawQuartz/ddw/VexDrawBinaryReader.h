@@ -14,19 +14,6 @@ extern int const TWIPS;
 
 @interface VexDrawBinaryReader : NSObject
 
--(VexDrawBinaryReader*) initWithData:(NSData *) data usingVexObject:(VexObject *) vo;
-
--(Symbol *) parseSymbol:(VexObject *) vo;
-
-
--(void) flushBits;
--(unsigned int) readByte;
--(BOOL) readBit;
--(int) readNBitValue;
--(CGRect) readNBitRect;
--(int) readNBitInt:(int)nBits;
--(int) readNBits:(int) nBits;
--(int) readNBits:(int) nBits startValue:(int) result;
--(CGColorRef) readAndCreateColor:(int) nBits;
+-(VexObject *) createVexObjectFromData:(NSData *) data;
 
 @end

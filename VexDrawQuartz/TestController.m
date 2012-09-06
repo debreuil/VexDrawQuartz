@@ -8,8 +8,11 @@
 
 #import "TestController.h"
 #import "QuartzView.h"
+#import "VexObject.h"
+#import "VexDrawBinaryReader.h"
 
 @implementation TestController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,7 +26,14 @@
 - (void)loadView
 {
     QuartzView *rootView = [[QuartzView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.view = rootView;    
+    self.view = rootView;
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"testData" ofType:@"dat"];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    
+    VexDrawBinaryReader *br = [[VexDrawBinaryReader alloc] init];
+    VexObject *vo = [br createVexObjectFromData:data];    
+    [rootView renderVexImageWithTimeline:[vo.definitions objectForKey:[NSNumber numberWithInt:3]]];
 }
 
 - (void)didReceiveMemoryWarning

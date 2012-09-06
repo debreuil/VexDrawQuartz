@@ -7,10 +7,13 @@
 //
 
 #import "QuartzView.h"
+#import "Timeline.h"
 
 #import <QuartzCore/CoreAnimation.h>
 
 @implementation QuartzView
+
+UIImage *myImage;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -21,9 +24,8 @@
     return self;
 }
 
-UIImage *myImage;
 
-- (void)renderVexImage
+- (void)renderVexImageWithTimeline:(Timeline *) tl
 {
     //[self setHidden:NO];
     CGSize screenSize = self.frame.size;
@@ -38,22 +40,24 @@ UIImage *myImage;
                                                  kCGImageAlphaPremultipliedLast);
     
     CGContextTranslateCTM(context, 0.0, screenSize.height);
-    CGContextScaleCTM(context, 1.0, -1.0);  
-    CGContextSetLineWidth(context, 2.0);        
-    CGFloat components[] = {0.0, 0.0, 1.0, 1.0};    
-    CGColorRef color = CGColorCreate(colorSpaceRef, components);    
-    CGContextSetStrokeColorWithColor(context, color);
+    CGContextScaleCTM(context, 1.0, -1.0);
     
-    CGContextMoveToPoint(context, 0, 0);
-    CGContextAddLineToPoint(context, screenSize.width, screenSize.height);    
-    CGContextStrokePath(context);
+    [Timeline drawTimeline:tl withContext:context];
+    
+//    CGContextSetLineWidth(context, 2.0);        
+//    CGFloat components[] = {0.0, 0.0, 1.0, 1.0};    
+//    CGColorRef color = CGColorCreate(colorSpaceRef, components);    
+//    CGContextSetStrokeColorWithColor(context, color);
+//    
+//    CGContextMoveToPoint(context, 0, 0);
+//    CGContextAddLineToPoint(context, screenSize.width, screenSize.height);    
+//    CGContextStrokePath(context);
     
     
     CGImageRef cgImage = CGBitmapContextCreateImage(context);
     myImage = [UIImage imageWithCGImage:cgImage];
     
     CGColorSpaceRelease(colorSpaceRef);
-    CGColorRelease(color);
     CGImageRelease(cgImage);
     CGContextRelease(context);    
 }
@@ -62,15 +66,14 @@ UIImage *myImage;
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    [[UIColor lightGrayColor] setFill];
+    [[UIColor whiteColor] setFill];
     CGContextFillRect(context, rect);
     
-    if(myImage == nil)
+    if(myImage != nil)
     {
-        [self renderVexImage];
+        //[self renderVexImage];   
+        [myImage drawAtPoint:CGPointMake(10, 10)];
     }
-    
-    [myImage drawAtPoint:CGPointMake(10, 10)];
 }
 
 // Only override drawRect: if you perform custom drawing.

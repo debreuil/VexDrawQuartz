@@ -29,10 +29,21 @@
 	unsigned int fillIndexNBits;
 	unsigned int strokeIndexNBits;	
 }
+-(Symbol *) parseSymbol:(VexObject *) vo;
+-(void) flushBits;
+-(unsigned int) readByte;
+-(BOOL) readBit;
+-(int) readNBitValue;
+-(CGRect) readNBitRect;
+-(int) readNBitInt:(int)nBits;
+-(int) readNBits:(int) nBits;
+-(int) readNBits:(int) nBits startValue:(int) result;
+-(CGColorRef) readAndCreateColor:(int) nBits;
 @end
 
-@implementation VexDrawBinaryReader
 
+
+@implementation VexDrawBinaryReader    
 
 int const TWIPS = 32;
 
@@ -46,17 +57,15 @@ static const unsigned int maskArray[] =
 
 CGColorSpaceRef colorSpace;
 
--(VexDrawBinaryReader*) initWithData:(NSData *) theData usingVexObject:(VexObject *) vo
+-(VexObject *) createVexObjectFromData:(NSData *) data
 {
-    self = [super init];
-    if(self)
-    {
-        rawData = theData.bytes;
-        dataLen = theData.length;
-        [self parseTags:vo];
-        
-    }
-    return self;
+    VexObject *result = [[VexObject alloc] init];
+    
+    rawData = data.bytes;
+    dataLen = data.length;
+    [self parseTags:result];
+    
+    return result;
 }
 
 -(void) parseTags:(VexObject *) vo
@@ -110,7 +119,7 @@ CGColorSpaceRef colorSpace;
 -(Timeline *) parseTimeline:(VexObject *) vo
 {
     Timeline *result = [[Timeline alloc] init];
-    
+    result.vo = vo;
     
     result.definitionId = [NSNumber numberWithInt:[self readNBits:32]];
     result.bounds = [self readNBitRect];
@@ -120,6 +129,7 @@ CGColorSpaceRef colorSpace;
     {
         // defid32,hasVals[7:bool], x?,y?,scaleX?, scaleY?, rotation?, shear?, "name"?
         Instance *inst = [[Instance alloc] init];
+        inst.vo = vo;
         inst.definitionId = [NSNumber numberWithInt:[self readNBits:32]];
         
         BOOL hasX = [self readBit];
@@ -179,6 +189,7 @@ CGColorSpaceRef colorSpace;
 -(Symbol *) parseSymbol:(VexObject *) vo
 {
     Symbol *result = [[Symbol alloc] init];
+    result.vo = vo;
     
     result.definitionId = [NSNumber numberWithInt:[self readNBits:32]];
     
@@ -198,7 +209,7 @@ CGColorSpaceRef colorSpace;
         for (int i = 0; i < segmentCount; i++)
         {
             int segType = [self readNBits:2];
-            CGPoint pt = {[self readNBits:nBits] / TWIPS, [self readNBits:nBits] / TWIPS};
+            CGPoint pt = {[self readNBitInt:nBits] / TWIPS, [self readNBitInt:nBits] / TWIPS};
             
             switch(segType)
             {
@@ -214,16 +225,18 @@ CGColorSpaceRef colorSpace;
                 }
                 case 2:
                 {
-                    CGPathAddQuadCurveToPoint(path, nil, pt.x, pt.y,[self readNBits:nBits],[self readNBits:nBits]);
+                    CGPathAddQuadCurveToPoint(path, nil, pt.x, pt.y,
+                                              [self readNBitInt:nBits] / TWIPS,
+                                              [self readNBitInt:nBits] / TWIPS);
                     break;
                 }
                 case 3:
                 {
                     CGPathAddCurveToPoint(path, nil, pt.x, pt.y,
-                                              [self readNBits:nBits],
-                                              [self readNBits:nBits],
-                                              [self readNBits:nBits],
-                                              [self readNBits:nBits]);
+                                              [self readNBitInt:nBits] / TWIPS,
+                                              [self readNBitInt:nBits] / TWIPS,
+                                              [self readNBitInt:nBits] / TWIPS,
+                                              [self readNBitInt:nBits] / TWIPS);
                     break;
                 }
 

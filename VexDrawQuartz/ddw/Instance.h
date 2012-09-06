@@ -11,6 +11,8 @@
 
 @interface Instance : NSObject
 
+@property (nonatomic, weak) VexObject *vo;
+
 @property (nonatomic, retain) NSNumber *definitionId;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSNumber *instanceId;
@@ -26,6 +28,6 @@
 @property (nonatomic, assign) BOOL hasRotation;
 @property (nonatomic, assign) BOOL hasShear;
 
-+(void) drawInstance:(Instance *) inst withVexObject:(VexObject *)vo;
++(void) drawInstance:(Instance *) inst withContext: (CGContextRef) context;
 
 @end

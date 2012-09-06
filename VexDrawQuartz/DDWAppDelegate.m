@@ -27,15 +27,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"testData" ofType:@"dat"];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    
-    VexObject *vo = [[VexObject alloc] init];
-    VexDrawBinaryReader *br = [[VexDrawBinaryReader alloc] initWithData:data usingVexObject:vo];
-    
-    br = nil;
-    
+      
                                                 
     return YES;
 }

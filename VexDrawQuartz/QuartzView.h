@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Timeline.h"
 
 @interface QuartzView : UIView
+
+- (void)renderVexImageWithTimeline:(Timeline *) tl;
 
 @end

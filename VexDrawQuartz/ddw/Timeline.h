@@ -14,6 +14,6 @@
 
 @property (nonatomic, retain) NSMutableArray *instances;
 
-+(void) drawTimeline:(Timeline *) tl withVexObject:(VexObject *)vo;
++(void) drawTimeline:(Timeline *) tl withContext: (CGContextRef) context;
 
 @end

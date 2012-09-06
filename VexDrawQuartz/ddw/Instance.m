@@ -16,6 +16,8 @@
 
 static int instanceCounter = 0;
 
+@synthesize vo = _vo;
+
 @synthesize definitionId = _definitionId;
 @synthesize name = _name;
 @synthesize instanceId = _instanceId;
@@ -48,7 +50,7 @@ static int instanceCounter = 0;
     return [NSString stringWithFormat:@"id: %d x:%d y: %d", (int)self.definitionId, (int)self.x, (int)self.y];
 }
 
-+(void) drawInstance:(Instance *) inst withVexObject:(VexObject *)vo
++(void) drawInstance:(Instance *) inst  withContext: (CGContextRef)context
 {
     
     //NSString *divClass = (inst.name == nil || inst.name == @"") ?
@@ -58,7 +60,7 @@ static int instanceCounter = 0;
     float offsetX = 0;
     float offsetY = 0;
     
-    Definition *def = [vo.definitions objectForKey:inst.definitionId];
+    Definition *def = [inst.vo.definitions objectForKey:inst.definitionId];
     
     if(def.isTimeline)
     {
@@ -66,23 +68,23 @@ static int instanceCounter = 0;
         
         if (tl.instances.count > 1 || (tl.instances.count == 1 && [tl isKindOfClass:[Timeline class]]) )
         {
-            [Timeline drawTimeline: (Timeline *)tl withVexObject:vo];
+            [Timeline drawTimeline: (Timeline *)tl withContext:context];
         }
         else
         {
             NSNumber *defId = ((Instance *)[tl.instances objectAtIndex:0]).definitionId;
-            Symbol *symbol = (Symbol *)[vo.definitions objectForKey:defId];
+            Symbol *symbol = (Symbol *)[inst.vo.definitions objectForKey:defId];
             CGRect bnds = symbol.bounds;
             offsetX = -bnds.origin.x * inst.scaleX;
             offsetY = -bnds.origin.y * inst.scaleY;
             
-            [Symbol drawSymbol:symbol withMetricsFrom:inst withVexObject:vo];
+            [Symbol drawSymbol:symbol withMetricsFrom:inst withContext:context];
         }
     }
     else
     {
         // doesn't normally happen
-        [Symbol drawSymbol:(Symbol *)def withMetricsFrom:inst withVexObject:vo];
+        [Symbol drawSymbol:(Symbol *)def withMetricsFrom:inst withContext:context];
     }
     
     //vo.transformObject(div, inst, offsetX, offsetY);

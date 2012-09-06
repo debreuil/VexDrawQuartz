@@ -24,11 +24,11 @@
     return self;
 }
 
-+(void) drawTimeline:(Timeline *) tl withVexObject:(VexObject *)vo
++(void) drawTimeline:(Timeline *) tl withContext: (CGContextRef)context
 {    
     for(Instance *inst in tl.instances)
     {
-        //Instance.drawInstance(inst, vo);
+        [Instance drawInstance:inst withContext:context];
     }
 }
 

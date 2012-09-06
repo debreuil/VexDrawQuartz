@@ -12,9 +12,10 @@
 
 @interface Symbol : Definition
 
+@property (nonatomic, weak) VexObject *vo;
 @property (nonatomic, retain) NSMutableArray *shapes;
 
-+(void) drawSymbol:(Symbol *)symbol withMetricsFrom:(Instance *)inst withVexObject:(VexObject *)vo;
++(void) drawSymbol:(Symbol *)symbol withMetricsFrom:(Instance *)metrics withContext: (CGContextRef) context;
 
 
 @end

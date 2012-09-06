@@ -10,6 +10,7 @@
 
 @implementation Definition
 
+@synthesize vo = _vo;
 @synthesize definitionId = _definitionId;
 @synthesize isTimeline = _isTimeline;
 @synthesize bounds = _bounds;

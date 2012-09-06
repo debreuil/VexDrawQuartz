@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VexObject.h"
 
 @interface Definition : NSObject
+
+@property (nonatomic, weak) VexObject *vo;
 
 @property (nonatomic, retain) NSNumber *definitionId;
 @property (nonatomic, assign) BOOL isTimeline;
