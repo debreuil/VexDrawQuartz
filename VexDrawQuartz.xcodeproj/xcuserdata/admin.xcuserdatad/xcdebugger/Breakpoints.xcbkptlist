@@ -22,25 +22,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "VexDrawQuartz/DDWAppDelegate.m"
-         timestampString = "368388273.715503"
+         timestampString = "368571003.382239"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
+         startingLineNumber = "40"
+         endingLineNumber = "40"
          landmarkName = "-application:didFinishLaunchingWithOptions:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "VexDrawQuartz/ddw/VexDrawBinaryReader.m"
-         timestampString = "368558349.40908"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "172"
-         endingLineNumber = "172"
-         landmarkName = "-parseStrokes:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

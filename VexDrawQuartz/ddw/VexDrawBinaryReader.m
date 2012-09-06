@@ -14,6 +14,9 @@
 #import "GradientFill.h"
 #import "GradientStop.h"
 #import "Symbol.h"
+#import "Shape.h"
+#import "Timeline.h"
+#import "Instance.h"
 
 
 @interface VexDrawBinaryReader()
@@ -81,15 +84,18 @@ CGColorSpaceRef colorSpace;
                 break;
 
             case SymbolDefinition:
-                [self parseSymbol:vo];
-                 //Symbol *symbol = [self parseSymbol:vo];
-                //[[vo definitions] addObject:symbol];
+            {
+                Symbol *symbol = [self parseSymbol:vo];
+                [[vo definitions] addObject:symbol];
                 break;
+            }
                 
             case TimelineDefinition:
-                //var tl:Timeline = parseTimeline(vo);
-                //vo.definitions.set(tl.id, tl);
+            {
+                Timeline *tl = [self parseTimeline:vo];
+                [[vo definitions] addObject:tl];
                 break;
+            }
 
                 
             case End:		
@@ -101,9 +107,134 @@ CGColorSpaceRef colorSpace;
     CGColorSpaceRelease(colorSpace);
 }
 
+-(Timeline *) parseTimeline:(VexObject *) vo
+{
+    Timeline *result = [[Timeline alloc] init];
+    
+    
+    result.definitionId = [self readNBits:32];
+    result.bounds = [self readNBitRect];
+    
+    int instancesCount = [self readNBits:11];
+    for (int i = 0; i < instancesCount; i++)
+    {
+        // defid32,hasVals[7:bool], x?,y?,scaleX?, scaleY?, rotation?, shear?, "name"?
+        Instance *inst = [[Instance alloc] init];
+        inst.definitionId = [self readNBits:32];
+        
+        BOOL hasX = [self readBit];
+        BOOL hasY = [self readBit];
+        BOOL hasScaleX = [self readBit];
+        BOOL hasScaleY = [self readBit];
+        BOOL hasRotation = [self readBit];
+        BOOL hasShear = [self readBit];
+        BOOL hasName = [self readBit];
+        
+        if (hasX || hasY || hasScaleX || hasScaleY || hasRotation || hasShear)
+        {
+            int mxNBits = [self readNBitValue];
+            if (hasX)
+            {
+                inst.x = [self readNBitInt:mxNBits] / TWIPS;
+            }
+            if (hasY)
+            {
+                inst.y = [self readNBitInt:mxNBits] / TWIPS;
+            }
+            if (hasScaleX)
+            {
+                inst.scaleX = [self readNBitInt:mxNBits] / TWIPS;
+                inst.hasScale = true;
+            }
+            if (hasScaleY)
+            {
+                inst.scaleY = [self readNBitInt:mxNBits] / TWIPS;
+                inst.hasScale = true;
+            }
+            if (hasRotation)
+            {
+                inst.rotation = [self readNBitInt:mxNBits] / TWIPS;
+                inst.hasRotation = true;
+            }
+            if (hasShear)
+            {
+                inst.shear = [self readNBitInt:mxNBits] / TWIPS;
+                inst.hasShear = true;
+            }
+        }
+        
+        if (hasName)
+        {
+            // todo: read name
+        }
+        
+        [result.instances addObject:inst];
+        NSLog(@"inst: %@", inst);
+    }
+    
+    [self flushBits];
+    
+    return result;
+}
+
 -(Symbol *) parseSymbol:(VexObject *) vo
 {
     Symbol *result = [[Symbol alloc] init];
+    
+    result.definitionId = [self readNBits:32];
+    
+    // todo: name
+    
+    result.bounds = [self readNBitRect];
+    
+    int shapesCount = [self readNBits:11];
+    for (int i = 0; i < shapesCount; i++)
+    {
+        int strokeIndex = [self readNBits:strokeIndexNBits];
+        int fillIndex = [self readNBits:fillIndexNBits];
+        CGMutablePathRef path = CGPathCreateMutable();
+
+        int nBits = [self readNBitValue];
+        int segmentCount = [self readNBits:11];
+        for (int i = 0; i < segmentCount; i++)
+        {
+            int segType = [self readNBits:2];
+            CGPoint pt = {[self readNBits:nBits] / TWIPS, [self readNBits:nBits] / TWIPS};
+            
+            switch(segType)
+            {
+                case 0:
+                {
+                    CGPathMoveToPoint(path, nil, pt.x, pt.y);
+                    break;
+                }
+                case 1:
+                {
+                    CGPathAddLineToPoint(path, nil, pt.x, pt.y);
+                    break;
+                }
+                case 2:
+                {
+                    CGPathAddQuadCurveToPoint(path, nil, pt.x, pt.y,[self readNBits:nBits],[self readNBits:nBits]);
+                    break;
+                }
+                case 3:
+                {
+                    CGPathAddCurveToPoint(path, nil, pt.x, pt.y,
+                                              [self readNBits:nBits],
+                                              [self readNBits:nBits],
+                                              [self readNBits:nBits],
+                                              [self readNBits:nBits]);
+                    break;
+                }
+
+            }
+        }
+        Shape *shape = [[Shape alloc] initWithStrokeIndex:strokeIndex fillIndex:fillIndex path:path];
+        [result.shapes addObject:shape];
+    }
+    
+    [self flushBits];
     
     return result;
 }
@@ -143,8 +274,7 @@ CGColorSpaceRef colorSpace;
             [[gradient stops] addObject:stop];
         }	
         
-        [[vo fills] addObject:gradient];
-        NSLog(@"grad: %@", gradient);
+        [vo.fills addObject:gradient];
     }
     
     [self flushBits];

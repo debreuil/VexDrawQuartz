@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Definition.h"
 
-@interface Timeline : NSObject
+@interface Timeline : Definition
+
+@property (nonatomic, retain) NSMutableArray *instances;
 
 @end

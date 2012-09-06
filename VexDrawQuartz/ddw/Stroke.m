@@ -13,13 +13,13 @@
 @synthesize color = _color;
 @synthesize lineWidth = _lineWidth;
 
--(id) initWithColor:(CGColorRef)theColor lineWidth:(float)theLineWidth
+-(id) initWithColor:(CGColorRef)color lineWidth:(float)lineWidth
 {
     self = [super init];
     if(self)
     {
-        _color = theColor;
-        _lineWidth = theLineWidth;
+        _color = color;
+        _lineWidth = lineWidth;
     }
     return self;
 }

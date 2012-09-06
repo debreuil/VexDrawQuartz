@@ -19,8 +19,6 @@
 		84FE83B315F41F9600BCD7B8 /* testData.dat in Resources */ = {isa = PBXBuildFile; fileRef = 84FE83B215F41E4E00BCD7B8 /* testData.dat */; };
 		84FE83C315F4231300BCD7B8 /* GradientFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83C215F4231300BCD7B8 /* GradientFill.m */; };
 		84FE83C615F4232300BCD7B8 /* Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83C515F4232300BCD7B8 /* Instance.m */; };
-		84FE83CC15F4234300BCD7B8 /* Segment.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83CB15F4234300BCD7B8 /* Segment.m */; };
-		84FE83CF15F4237200BCD7B8 /* SegmentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83CE15F4237200BCD7B8 /* SegmentType.m */; };
 		84FE83D215F4238100BCD7B8 /* Shape.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83D115F4238100BCD7B8 /* Shape.m */; };
 		84FE83D515F4239200BCD7B8 /* SolidFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83D415F4239100BCD7B8 /* SolidFill.m */; };
 		84FE83D815F423A300BCD7B8 /* Stroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83D715F423A300BCD7B8 /* Stroke.m */; };
@@ -54,10 +52,6 @@
 		84FE83C215F4231300BCD7B8 /* GradientFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientFill.m; path = ddw/GradientFill.m; sourceTree = "<group>"; };
 		84FE83C415F4232300BCD7B8 /* Instance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Instance.h; path = ddw/Instance.h; sourceTree = "<group>"; };
 		84FE83C515F4232300BCD7B8 /* Instance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Instance.m; path = ddw/Instance.m; sourceTree = "<group>"; };
-		84FE83CA15F4234300BCD7B8 /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Segment.h; path = ddw/Segment.h; sourceTree = "<group>"; };
-		84FE83CB15F4234300BCD7B8 /* Segment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Segment.m; path = ddw/Segment.m; sourceTree = "<group>"; };
-		84FE83CD15F4237200BCD7B8 /* SegmentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentType.h; path = ddw/SegmentType.h; sourceTree = "<group>"; };
-		84FE83CE15F4237200BCD7B8 /* SegmentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentType.m; path = ddw/SegmentType.m; sourceTree = "<group>"; };
 		84FE83D015F4238100BCD7B8 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shape.h; path = ddw/Shape.h; sourceTree = "<group>"; };
 		84FE83D115F4238100BCD7B8 /* Shape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shape.m; path = ddw/Shape.m; sourceTree = "<group>"; };
 		84FE83D315F4239100BCD7B8 /* SolidFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SolidFill.h; path = ddw/SolidFill.h; sourceTree = "<group>"; };
@@ -169,10 +163,6 @@
 				84FE83C215F4231300BCD7B8 /* GradientFill.m */,
 				84FE83C415F4232300BCD7B8 /* Instance.h */,
 				84FE83C515F4232300BCD7B8 /* Instance.m */,
-				84FE83CA15F4234300BCD7B8 /* Segment.h */,
-				84FE83CB15F4234300BCD7B8 /* Segment.m */,
-				84FE83CD15F4237200BCD7B8 /* SegmentType.h */,
-				84FE83CE15F4237200BCD7B8 /* SegmentType.m */,
 				84FE83D015F4238100BCD7B8 /* Shape.h */,
 				84FE83D115F4238100BCD7B8 /* Shape.m */,
 				84FE83D315F4239100BCD7B8 /* SolidFill.h */,
@@ -263,8 +253,6 @@
 				84A156FE15F172A700BDD9FE /* TestController.m in Sources */,
 				84FE83C315F4231300BCD7B8 /* GradientFill.m in Sources */,
 				84FE83C615F4232300BCD7B8 /* Instance.m in Sources */,
-				84FE83CC15F4234300BCD7B8 /* Segment.m in Sources */,
-				84FE83CF15F4237200BCD7B8 /* SegmentType.m in Sources */,
 				84FE83D215F4238100BCD7B8 /* Shape.m in Sources */,
 				84FE83D515F4239200BCD7B8 /* SolidFill.m in Sources */,
 				84FE83D815F423A300BCD7B8 /* Stroke.m in Sources */,

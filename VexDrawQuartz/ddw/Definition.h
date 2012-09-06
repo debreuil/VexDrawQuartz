@@ -10,4 +10,8 @@
 
 @interface Definition : NSObject
 
+@property (nonatomic, assign) int definitionId;
+@property (nonatomic, assign) BOOL isTimeline;
+@property (nonatomic, assign) CGRect bounds;
+
 @end

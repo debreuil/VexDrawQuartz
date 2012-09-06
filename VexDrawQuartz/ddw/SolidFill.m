@@ -12,12 +12,12 @@
 
 @synthesize color = _color;
 
--(id) initWithColor:(CGColorRef)theColor
+-(id) initWithColor:(CGColorRef)color
 {
     self = [super init];
     if(self)
     {
-        _color = theColor;
+        _color = color;
     }
     return self;
 }

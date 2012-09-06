@@ -27,13 +27,13 @@
     return self;
     
 }
--(id) initWithGradientType:(GradientType) theType gradientLine:(GradientLine) theLine
+-(id) initWithGradientType:(GradientType) type gradientLine:(GradientLine) line
 {
     self = [self init];
     if(self)
     {
-        _type = theType;
-        _line = theLine;
+        _type = type;
+        _line = line;
     }
     return self;
 }

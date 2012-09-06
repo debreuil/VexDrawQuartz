@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Definition.h"
 
-@interface Symbol : NSObject
+@interface Symbol : Definition
 
+@property (nonatomic, retain) NSMutableArray *shapes;
 
 @end

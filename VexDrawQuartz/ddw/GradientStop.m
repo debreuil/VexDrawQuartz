@@ -13,13 +13,13 @@
 @synthesize color = _color;
 @synthesize ratio = _ratio;
 
--(id) initWithColor:(CGColorRef) theColor ratio:(float) theRatio
+-(id) initWithColor:(CGColorRef) color ratio:(float) ratio
 {
     self = [super init];
     if(self)
     {
-        _color = theColor;
-        _ratio = theRatio;
+        _color = color;
+        _ratio = ratio;
     }
     return self;
 }
