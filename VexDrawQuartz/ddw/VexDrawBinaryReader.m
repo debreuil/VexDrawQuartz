@@ -45,7 +45,7 @@
 
 @implementation VexDrawBinaryReader    
 
-int const TWIPS = 32;
+float const TWIPS = 32;
 
 static const unsigned int maskArray[] = 
 {

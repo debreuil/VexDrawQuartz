@@ -60,7 +60,7 @@
             
             locations[i] = stop.ratio;            
         }        
-        _gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, 3);
+        _gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, 2);
         CGColorSpaceRelease(colorSpace);
     }
 }

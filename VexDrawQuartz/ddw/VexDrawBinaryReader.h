@@ -10,7 +10,7 @@
 #import "VexObject.h"
 #import "Symbol.h"
 
-extern int const TWIPS;
+extern float const TWIPS;
 
 @interface VexDrawBinaryReader : NSObject
 

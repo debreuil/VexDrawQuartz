@@ -67,7 +67,6 @@
                 CGContextSaveGState(context);
                 GradientFill *gf = (GradientFill *)fill;
                 CGContextAddPath(context, shape.path);
-                CGContextClosePath(context);
                 CGContextClip(context);
                 CGContextDrawLinearGradient(context, gf.gradient, gf.startPoint, gf.endPoint, 0);
                 CGContextRestoreGState(context);
