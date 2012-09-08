@@ -13,7 +13,13 @@
 #import "SolidFill.h"
 #import "GradientFill.h"
 
+@interface Symbol()
+//@property (nonatomic, weak) CGImageRef *image;
+@end
+
 @implementation Symbol
+
+//@synthesize image = _image;
 
 @synthesize vo = _vo;
 @synthesize shapes = _shapes;
@@ -29,20 +35,20 @@
     return self;    
 }
 
-+(void) drawSymbol:(Symbol *)symbol withMetricsFrom:(Instance *)metrics withContext: (CGContextRef)context
++(void) drawSymbol:(Symbol *)symbol atScaleX:(float)scaleX yScale:(float)scaleY withContext: (CGContextRef)context
 {
     CGRect bnds = symbol.bounds;
-    float offsetX = -bnds.origin.x * metrics.scaleX;
-    float offsetY = -bnds.origin.y * metrics.scaleY;
+    float offsetX = -bnds.origin.x * scaleX;
+    float offsetY = -bnds.origin.y * scaleY;
     
     //var cv:HTMLCanvasElement = vo.createCanvas(metrics.name, cast (bnds.width * metrics.scaleX), cast (bnds.height * metrics.scaleY));
     //var g:CanvasRenderingContext2D = cv.getContext("2d");
     
     CGContextSaveGState(context);
     CGContextTranslateCTM(context, offsetX, offsetY);
-    if(metrics.hasScale)
+    if(scaleX != 1.0 || scaleY != 1.0)
     {
-        CGContextScaleCTM(context, metrics.scaleX, metrics.scaleY);
+        CGContextScaleCTM(context, scaleX, scaleY);
     }
     
     //CGContextTranslateCTM(context, 322, 222);
@@ -72,6 +78,34 @@
         }        
     }
     CGContextRestoreGState(context);
+}
+
+- (CGImageRef)createCGImageAtScaleX:(float)scaleX scaleY:(float)scaleY
+{
+    CGSize screenSize = CGSizeMake(self.bounds.size.width * scaleX, self.bounds.size.height * scaleY);
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef context = CGBitmapContextCreate(   nil,
+                                                 screenSize.width,
+                                                 screenSize.height,
+                                                 8,
+                                                 4*(int)screenSize.width,
+                                                 colorSpaceRef,
+                                                 kCGImageAlphaPremultipliedLast);
+    
+    CGContextTranslateCTM(context, 0.0, screenSize.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    [Symbol drawSymbol:self atScaleX:scaleX yScale:scaleY withContext:context];
+    
+    CGImageRef cgImageRef = CGBitmapContextCreateImage(context);
+    
+    CGColorSpaceRelease(colorSpaceRef);
+    //CGImageRelease(cgImageRef);
+    CGContextRelease(context);
+    
+    
+    return cgImageRef;
 }
 
 @end

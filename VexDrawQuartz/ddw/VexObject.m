@@ -28,14 +28,14 @@
 }
 
 
--(void) drawTimelineIndex:(NSNumber *) index withContext:(CGContextRef)context
-{
-    Definition *tlDef = [self.definitions objectForKey:index];
-    if(tlDef != nil && [tlDef isKindOfClass:[Timeline class]])
-    {
-        Timeline *tl = (Timeline *)tlDef;
-        [Timeline drawTimeline:tl withContext:context];
-    }
-}
+//-(void) drawTimelineIndex:(NSNumber *) index withContext:(CGContextRef)context
+//{
+//    Definition *tlDef = [self.definitions objectForKey:index];
+//    if(tlDef != nil && [tlDef isKindOfClass:[Timeline class]])
+//    {
+//        Timeline *tl = (Timeline *)tlDef;
+//        [Timeline drawTimeline:tl withContext:context];
+//    }
+//}
 
 @end

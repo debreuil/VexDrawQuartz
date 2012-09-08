@@ -12,6 +12,6 @@
 @interface DDWAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) TestController *testController;
+//@property (strong, nonatomic) TestController *testController;
 
 @end

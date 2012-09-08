@@ -24,12 +24,17 @@
     return self;
 }
 
-+(void) drawTimeline:(Timeline *) tl withContext: (CGContextRef)context
-{    
+
++(CATransformLayer *) drawTimeline:(Timeline *) tl intoLayer: (CALayer *)parent
+{
+    CATransformLayer *tlayer = [CATransformLayer layer];
+    [parent addSublayer:tlayer];
+    
     for(Instance *inst in tl.instances)
     {
-        [Instance drawInstance:inst withContext:context];
+        [inst createLayerInLayer:tlayer];
     }
+    return tlayer;
 }
 
 @end

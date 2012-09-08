@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "VexObject.h"
+#import <QuartzCore/QuartzCore.h>
+#import <QuartzCore/CoreAnimation.h>
+#import <UIKit/UIKit.h>
+
 
 @interface Instance : NSObject
 
@@ -28,6 +32,7 @@
 @property (nonatomic, assign) BOOL hasRotation;
 @property (nonatomic, assign) BOOL hasShear;
 
-+(void) drawInstance:(Instance *) inst withContext: (CGContextRef) context;
+//+(void) drawInstance:(Instance *) inst withContext: (CGContextRef) context;
+-(void) createLayerInLayer:(CALayer *) parent;
 
 @end

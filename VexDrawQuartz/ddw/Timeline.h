@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
 #import "Definition.h"
 #import "VexObject.h"
 
@@ -14,6 +15,6 @@
 
 @property (nonatomic, retain) NSMutableArray *instances;
 
-+(void) drawTimeline:(Timeline *) tl withContext: (CGContextRef) context;
++(CATransformLayer *) drawTimeline:(Timeline *) tl intoLayer: (CALayer *)parent;
 
 @end

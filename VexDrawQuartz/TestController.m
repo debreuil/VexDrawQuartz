@@ -10,46 +10,50 @@
 #import "QuartzView.h"
 #import "VexObject.h"
 #import "VexDrawBinaryReader.h"
+#import <QuartzCore/QuartzCore.h>
+
+@interface TestController()
+    @property (nonatomic, retain) VexObject *vexObject;
+@end
+
 
 @implementation TestController
 
+@synthesize vexObject = _vexObject;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (IBAction)parseVexObjects:(id)sender
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization                
-    }
-    return self;
-}
-
-- (void)loadView
-{
-    QuartzView *rootView = [[QuartzView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.view = rootView;
-    
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"testData" ofType:@"dat"];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    NSData *vexData = [NSData dataWithContentsOfFile:filePath];
     
     VexDrawBinaryReader *br = [[VexDrawBinaryReader alloc] init];
-    VexObject *vo = [br createVexObjectFromData:data];    
-    [rootView renderVexImageWithTimeline:[vo.definitions objectForKey:[NSNumber numberWithInt:3]]];
+    self.vexObject = [br createVexObjectFromData:vexData];
+    ((UIButton *)sender).hidden = YES;
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)drawVexObjects:(id)sender
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+    QuartzView *qv = (QuartzView *)self.view;
     
-    // Release any cached data, images, etc that aren't in use.
+    Timeline *tl = [self.vexObject.definitions objectForKey:[NSNumber numberWithInt:1]];
+    
+    [Timeline drawTimeline:tl intoLayer:qv.layer];
+    
+//    CGImageRef img = [symbol createCGImageAtScaleX:1 scaleY:1];
+//    for (int y = 0; y <= 600; y+=100)
+//    {
+//        for (int x = 0; x < 1000; x+=80)
+//        {
+//            [qv createLayerWithCGImage:img atX:x y:y];
+//        }
+//    }
 }
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [super viewDidLoad];    
 }
 
 - (void)viewDidUnload

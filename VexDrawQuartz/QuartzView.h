@@ -11,6 +11,4 @@
 
 @interface QuartzView : UIView
 
-- (void)renderVexImageWithTimeline:(Timeline *) tl;
-
 @end

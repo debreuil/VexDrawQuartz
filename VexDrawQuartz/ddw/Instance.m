@@ -1,16 +1,13 @@
-//
-//  Instance.m
-//  VexDrawQuartz
-//
-//  Created by admin on 12-09-02.
-//
-//
-
 #import "Instance.h"
 #import "Definition.h"
 #import "VexObject.h"
 #import "Timeline.h"
 #import "Symbol.h"
+
+@interface Instance()
+@end
+
+
 
 @implementation Instance
 
@@ -50,11 +47,43 @@ static int instanceCounter = 0;
     return [NSString stringWithFormat:@"id: %d x:%d y: %d", (int)self.definitionId, (int)self.x, (int)self.y];
 }
 
-+(void) drawInstance:(Instance *) inst  withContext: (CGContextRef)context
+
+//- (void) drawLayer:(CALayer *)layer inContext:(CGContextRef)context
+//{
+//    [Instance drawInstance:self withContext:context];
+//}
+
+
+-(void) createLayerInLayer:(CALayer *) parent
 {
+    CALayer *calayer = nil;
+    Definition *def = [self.vo.definitions objectForKey:self.definitionId];
     
+    if([def isKindOfClass:[Symbol class]])
+    {    
+        Symbol *symbol = (Symbol *)def;
+        
+        calayer = [CALayer layer];        
+        CGImageRef img = [symbol createCGImageAtScaleX:self.scaleX scaleY:self.scaleY];        
+        [calayer setFrame:CGRectMake(0, 0, CGImageGetWidth(img), CGImageGetHeight(img))];
+        //[calayer setBackgroundColor:[UIColor yellowColor].CGColor];
+        [parent addSublayer:calayer];
+        
+        calayer.contents = (__bridge id)img;
+        calayer.position = CGPointMake(self.x,self.y);
+        
+    }
+    else if([def isKindOfClass:[Timeline class]])
+    {
+        CATransformLayer *tlayer = [Timeline drawTimeline:(Timeline *)def intoLayer:parent];
+        tlayer.position = CGPointMake(self.x, self.y);
+    }
+}
+/*
++(void) drawInstance:(Instance *) inst  withContext: (CGContextRef)context
+{    
     //NSString *divClass = (inst.name == nil || inst.name == @"") ?
-    //                        [NSString stringWithFormat:@"inst_%d", (int)inst.instanceId] : inst.name;
+    //[NSString stringWithFormat:@"inst_%d", (int)inst.instanceId] : inst.name;
     
     //var div:HTMLDivElement = vo.pushDiv(divClass);
     float offsetX = 0;
@@ -78,13 +107,13 @@ static int instanceCounter = 0;
             offsetX = -bnds.origin.x * inst.scaleX;
             offsetY = -bnds.origin.y * inst.scaleY;
             
-            [Symbol drawSymbol:symbol withMetricsFrom:inst withContext:context];
+            [Symbol drawSymbol:symbol atScaleX:inst.scaleX yScale:inst.scaleY withContext:context];
         }
     }
     else
     {
         // doesn't normally happen
-        [Symbol drawSymbol:(Symbol *)def withMetricsFrom:inst withContext:context];
+        [Symbol drawSymbol:(Symbol *)def atScaleX:inst.scaleX yScale:inst.scaleY withContext:context];
     }
     
     //vo.transformObject(div, inst, offsetX, offsetY);
@@ -92,6 +121,8 @@ static int instanceCounter = 0;
     //vo.popDiv();
      
 }
+*/
+
 
 @end
 

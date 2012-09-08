@@ -15,7 +15,7 @@
 @property (nonatomic, weak) VexObject *vo;
 @property (nonatomic, retain) NSMutableArray *shapes;
 
-+(void) drawSymbol:(Symbol *)symbol withMetricsFrom:(Instance *)metrics withContext: (CGContextRef) context;
-
++(void) drawSymbol:(Symbol *)symbol atScaleX:(float)scaleX yScale:(float)scaleY withContext: (CGContextRef)context;
+- (CGImageRef)createCGImageAtScaleX:(float)scaleX scaleY:(float)scaleY;
 
 @end
