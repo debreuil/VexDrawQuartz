@@ -32,7 +32,7 @@
 @property (nonatomic, assign) BOOL hasRotation;
 @property (nonatomic, assign) BOOL hasShear;
 
-//+(void) drawInstance:(Instance *) inst withContext: (CGContextRef) context;
+
 -(void) createLayerInLayer:(CALayer *) parent;
 
 @end

@@ -48,12 +48,6 @@ static int instanceCounter = 0;
 }
 
 
-//- (void) drawLayer:(CALayer *)layer inContext:(CGContextRef)context
-//{
-//    [Instance drawInstance:self withContext:context];
-//}
-
-
 -(void) createLayerInLayer:(CALayer *) parent
 {
     CALayer *calayer = nil;
@@ -79,49 +73,6 @@ static int instanceCounter = 0;
         tlayer.position = CGPointMake(self.x, self.y);
     }
 }
-/*
-+(void) drawInstance:(Instance *) inst  withContext: (CGContextRef)context
-{    
-    //NSString *divClass = (inst.name == nil || inst.name == @"") ?
-    //[NSString stringWithFormat:@"inst_%d", (int)inst.instanceId] : inst.name;
-    
-    //var div:HTMLDivElement = vo.pushDiv(divClass);
-    float offsetX = 0;
-    float offsetY = 0;
-    
-    Definition *def = [inst.vo.definitions objectForKey:inst.definitionId];
-    
-    if(def.isTimeline)
-    {
-        Timeline *tl = (Timeline *)def;
-        
-        if (tl.instances.count > 1 || (tl.instances.count == 1 && [tl isKindOfClass:[Timeline class]]) )
-        {
-            [Timeline drawTimeline: (Timeline *)tl withContext:context];
-        }
-        else
-        {
-            NSNumber *defId = ((Instance *)[tl.instances objectAtIndex:0]).definitionId;
-            Symbol *symbol = (Symbol *)[inst.vo.definitions objectForKey:defId];
-            CGRect bnds = symbol.bounds;
-            offsetX = -bnds.origin.x * inst.scaleX;
-            offsetY = -bnds.origin.y * inst.scaleY;
-            
-            [Symbol drawSymbol:symbol atScaleX:inst.scaleX yScale:inst.scaleY withContext:context];
-        }
-    }
-    else
-    {
-        // doesn't normally happen
-        [Symbol drawSymbol:(Symbol *)def atScaleX:inst.scaleX yScale:inst.scaleY withContext:context];
-    }
-    
-    //vo.transformObject(div, inst, offsetX, offsetY);
-    
-    //vo.popDiv();
-     
-}
-*/
 
 
 @end

@@ -14,7 +14,6 @@
 		84A156DA15F129B900BDD9FE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84A156D815F129B900BDD9FE /* InfoPlist.strings */; };
 		84A156DC15F129B900BDD9FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A156DB15F129B900BDD9FE /* main.m */; };
 		84A156E015F129B900BDD9FE /* DDWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A156DF15F129B900BDD9FE /* DDWAppDelegate.m */; };
-		84A156FA15F1708900BDD9FE /* QuartzView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A156F915F1708900BDD9FE /* QuartzView.m */; };
 		84A156FE15F172A700BDD9FE /* TestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A156FC15F172A700BDD9FE /* TestController.m */; };
 		84A156FF15F172A700BDD9FE /* TestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A156FD15F172A700BDD9FE /* TestController.xib */; };
 		84CB5B8215FA54E200442103 /* VexDrawStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CB5B8115FA54E200442103 /* VexDrawStoryboard.storyboard */; };
@@ -45,8 +44,6 @@
 		84A156DD15F129B900BDD9FE /* VexDrawQuartz-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VexDrawQuartz-Prefix.pch"; sourceTree = "<group>"; };
 		84A156DE15F129B900BDD9FE /* DDWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDWAppDelegate.h; sourceTree = "<group>"; };
 		84A156DF15F129B900BDD9FE /* DDWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDWAppDelegate.m; sourceTree = "<group>"; };
-		84A156F815F1708900BDD9FE /* QuartzView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzView.h; sourceTree = "<group>"; };
-		84A156F915F1708900BDD9FE /* QuartzView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzView.m; sourceTree = "<group>"; };
 		84A156FB15F172A700BDD9FE /* TestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestController.h; sourceTree = "<group>"; };
 		84A156FC15F172A700BDD9FE /* TestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestController.m; sourceTree = "<group>"; };
 		84A156FD15F172A700BDD9FE /* TestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestController.xib; sourceTree = "<group>"; };
@@ -130,8 +127,6 @@
 				84A156DE15F129B900BDD9FE /* DDWAppDelegate.h */,
 				84A156DF15F129B900BDD9FE /* DDWAppDelegate.m */,
 				84A156D615F129B900BDD9FE /* Supporting Files */,
-				84A156F815F1708900BDD9FE /* QuartzView.h */,
-				84A156F915F1708900BDD9FE /* QuartzView.m */,
 				84A156FB15F172A700BDD9FE /* TestController.h */,
 				84A156FC15F172A700BDD9FE /* TestController.m */,
 				84A156FD15F172A700BDD9FE /* TestController.xib */,
@@ -257,7 +252,6 @@
 			files = (
 				84A156DC15F129B900BDD9FE /* main.m in Sources */,
 				84A156E015F129B900BDD9FE /* DDWAppDelegate.m in Sources */,
-				84A156FA15F1708900BDD9FE /* QuartzView.m in Sources */,
 				84A156FE15F172A700BDD9FE /* TestController.m in Sources */,
 				84FE83C315F4231300BCD7B8 /* GradientFill.m in Sources */,
 				84FE83C615F4232300BCD7B8 /* Instance.m in Sources */,

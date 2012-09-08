@@ -41,8 +41,6 @@
     float offsetX = -bnds.origin.x * scaleX;
     float offsetY = -bnds.origin.y * scaleY;
     
-    //var cv:HTMLCanvasElement = vo.createCanvas(metrics.name, cast (bnds.width * metrics.scaleX), cast (bnds.height * metrics.scaleY));
-    //var g:CanvasRenderingContext2D = cv.getContext("2d");
     
     CGContextSaveGState(context);
     CGContextTranslateCTM(context, offsetX, offsetY);
@@ -51,8 +49,6 @@
         CGContextScaleCTM(context, scaleX, scaleY);
     }
     
-    //CGContextTranslateCTM(context, 322, 222);
-    //CGContextScaleCTM(context, 4.0, 4.0);
     VexObject *vo = symbol.vo;
     for (Shape *shape in symbol.shapes)
     {
@@ -65,6 +61,16 @@
                 CGContextSetFillColorWithColor(context, ((SolidFill *)fill).color);
                 CGContextAddPath(context, shape.path);
                 CGContextFillPath(context);
+            }
+            else if([fill isKindOfClass:[GradientFill class]])
+            {
+                CGContextSaveGState(context);
+                GradientFill *gf = (GradientFill *)fill;
+                CGContextAddPath(context, shape.path);
+                CGContextClosePath(context);
+                CGContextClip(context);
+                CGContextDrawLinearGradient(context, gf.gradient, gf.startPoint, gf.endPoint, 0);
+                CGContextRestoreGState(context);
             }
         }
         
@@ -101,7 +107,6 @@
     CGImageRef cgImageRef = CGBitmapContextCreateImage(context);
     
     CGColorSpaceRelease(colorSpaceRef);
-    //CGImageRelease(cgImageRef);
     CGContextRelease(context);
     
     

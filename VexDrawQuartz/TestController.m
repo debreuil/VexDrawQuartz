@@ -7,10 +7,6 @@
 //
 
 #import "TestController.h"
-#import "QuartzView.h"
-#import "VexObject.h"
-#import "VexDrawBinaryReader.h"
-#import <QuartzCore/QuartzCore.h>
 
 @interface TestController()
     @property (nonatomic, retain) VexObject *vexObject;
@@ -32,12 +28,10 @@
 }
 
 - (IBAction)drawVexObjects:(id)sender
-{
-    QuartzView *qv = (QuartzView *)self.view;
-    
+{    
     Timeline *tl = [self.vexObject.definitions objectForKey:[NSNumber numberWithInt:1]];
     
-    [Timeline drawTimeline:tl intoLayer:qv.layer];
+    [Timeline drawTimeline:tl intoLayer:self.view.layer];
     
 //    CGImageRef img = [symbol createCGImageAtScaleX:1 scaleY:1];
 //    for (int y = 0; y <= 600; y+=100)

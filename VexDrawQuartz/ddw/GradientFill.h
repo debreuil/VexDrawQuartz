@@ -17,21 +17,16 @@ enum
 };
 typedef NSUInteger GradientType;
 
-typedef struct GradientLine
-{
-    float p0x;
-    float p0y;
-    float p1x;
-    float p1y;
-} GradientLine;
-
 
 @interface GradientFill : Fill
 
--(id) initWithGradientType:(GradientType) type gradientLine:(GradientLine) line;
+-(id) initWithGradientType:(GradientType) type startPoint:(CGPoint) startPoint endPoint:(CGPoint) endPoint;
 
 @property (nonatomic, retain) NSMutableArray *stops;
 @property (nonatomic, assign) GradientType type;
-@property (nonatomic, assign) GradientLine line;
+@property (nonatomic, assign) CGPoint startPoint;
+@property (nonatomic, assign) CGPoint endPoint;
+
+@property (nonatomic, readonly) CGGradientRef gradient;
 
 @end

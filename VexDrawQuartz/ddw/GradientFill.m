@@ -10,12 +10,13 @@
 #import "GradientStop.h"
 #import "Fill.h"
 
-
 @implementation GradientFill
 
 @synthesize stops = _stops;
-@synthesize line = _line;
 @synthesize type = _type;
+@synthesize startPoint = _startPoint;
+@synthesize endPoint = _endPoint;
+@synthesize gradient = _gradient;
 
 -(id) init
 {
@@ -24,28 +25,53 @@
     {
         _stops = [[NSMutableArray alloc] init];
     }
-    return self;
-    
+    return self;    
 }
--(id) initWithGradientType:(GradientType) type gradientLine:(GradientLine) line
+
+-(id) initWithGradientType:(GradientType) type startPoint:(CGPoint) startPoint endPoint:(CGPoint) endPoint
 {
     self = [self init];
     if(self)
     {
         _type = type;
-        _line = line;
+        _startPoint = startPoint;
+        _endPoint = endPoint;
     }
     return self;
 }
 
-- (NSString *)description
+-(void) createGradient
 {
-    NSString *s = [NSString stringWithFormat:@"grad: %d stops: %d", self.type, self.stops.count ];
-    if(self.stops.count > 0)
+    if(self.stops != nil && self.stops.count > 0)
     {
-        GradientStop *stop = [self.stops objectAtIndex:0];
-        s = [NSString stringWithFormat:@"%@ firstCol: #%@", s, stop.color];
+        CGFloat components[4 * self.stops.count];
+        CGFloat locations[self.stops.count];
+        
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        for (int i = 0; i < self.stops.count; i++)
+        {
+            GradientStop *stop = (GradientStop *)[self.stops objectAtIndex:i];
+            
+            const CGFloat *comps = CGColorGetComponents(stop.color);
+            components[4 * i + 0] = comps[0];
+            components[4 * i + 1] = comps[1];
+            components[4 * i + 2] = comps[2];
+            components[4 * i + 3] = comps[3];
+            
+            locations[i] = stop.ratio;            
+        }        
+        _gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, 3);
+        CGColorSpaceRelease(colorSpace);
     }
-    return s;
 }
+
+-(CGGradientRef) gradient
+{
+    if(_gradient == nil)
+    {
+        [self createGradient];
+    }
+    return _gradient;
+}    
+    
 @end

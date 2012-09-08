@@ -263,16 +263,10 @@ CGColorSpaceRef colorSpace;
         GradientType type = [self readNBits:3];
         
         int lineNBits = [self readNBitValue];
-        float tlX = [self readNBitInt:lineNBits] / TWIPS;
-        float tlY = [self readNBitInt:lineNBits] / TWIPS;
-        float trX = [self readNBitInt:lineNBits] / TWIPS;
-        float trY = [self readNBitInt:lineNBits] / TWIPS;
-        
-        GradientLine line = {tlX, tlY, trX, trY};
-        
-        GradientFill *gradient = [[GradientFill alloc] initWithGradientType:type gradientLine:line];
-        //var gradient:CanvasGradient = g.createLinearGradient(tlX, tlY,trX, trY);
-        
+        CGPoint startPoint = CGPointMake([self readNBitInt:lineNBits] / TWIPS, [self readNBitInt:lineNBits] / TWIPS);
+        CGPoint endPoint = CGPointMake([self readNBitInt:lineNBits] / TWIPS, [self readNBitInt:lineNBits] / TWIPS);
+        GradientFill *gradient = [[GradientFill alloc] initWithGradientType:type startPoint:startPoint endPoint:endPoint];
+       
         // stop colors
         int colorNBits = [self readNBitValue];
         int ratioNBits = [self readNBitValue];
