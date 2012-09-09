@@ -25,16 +25,12 @@
 }
 
 
-+(CATransformLayer *) drawTimeline:(Timeline *) tl intoLayer: (CALayer *)parent
-{
-    CATransformLayer *tlayer = [CATransformLayer layer];
-    [parent addSublayer:tlayer];
-    
++(void) drawTimeline:(Timeline *) tl intoLayer: (CALayer *)layer
+{    
     for(Instance *inst in tl.instances)
     {
-        [inst createLayerInLayer:tlayer];
+        [inst createLayerInLayer:layer];
     }
-    return tlayer;
 }
 
 @end

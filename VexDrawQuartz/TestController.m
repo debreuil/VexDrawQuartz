@@ -31,16 +31,7 @@
 {    
     Timeline *tl = [self.vexObject.definitions objectForKey:[NSNumber numberWithInt:1]];
     
-    [Timeline drawTimeline:tl intoLayer:self.view.layer];
-    
-//    CGImageRef img = [symbol createCGImageAtScaleX:1 scaleY:1];
-//    for (int y = 0; y <= 600; y+=100)
-//    {
-//        for (int x = 0; x < 1000; x+=80)
-//        {
-//            [qv createLayerWithCGImage:img atX:x y:y];
-//        }
-//    }
+    [Timeline drawTimeline:tl intoLayer:self.view.layer]; 
 }
 
 #pragma mark - View lifecycle

@@ -4,9 +4,7 @@
 #import "Timeline.h"
 #import "Symbol.h"
 
-@interface Instance()
-@end
-
+#define degreesToRadians(x) (M_PI * x / 180.0)
 
 
 @implementation Instance
@@ -47,7 +45,15 @@ static int instanceCounter = 0;
     return [NSString stringWithFormat:@"id: %d x:%d y: %d", (int)self.definitionId, (int)self.x, (int)self.y];
 }
 
-
+-(CALayer *) getRootLayerOf:(CALayer *) layer
+{
+    CALayer *result = layer;
+    while (result.superlayer)
+    {
+        result = result.superlayer;        
+    }
+    return result;
+}
 -(void) createLayerInLayer:(CALayer *) parent
 {
     CALayer *calayer = nil;
@@ -56,21 +62,64 @@ static int instanceCounter = 0;
     if([def isKindOfClass:[Symbol class]])
     {    
         Symbol *symbol = (Symbol *)def;
-        
-        calayer = [CALayer layer];        
-        CGImageRef img = [symbol createCGImageAtScaleX:self.scaleX scaleY:self.scaleY];        
-        [calayer setFrame:CGRectMake(0, 0, CGImageGetWidth(img), CGImageGetHeight(img))];
-        //[calayer setBackgroundColor:[UIColor yellowColor].CGColor];
+        calayer = [CALayer layer];
         [parent addSublayer:calayer];
+
+		float offsetX = (-def.bounds.origin.x / def.bounds.size.width);
+		float offsetY = (-def.bounds.origin.y / def.bounds.size.height);
+        [calayer setAnchorPoint:CGPointMake(offsetX, offsetY)];
+
+        CALayer *root = [self getRootLayerOf:parent];
+        CGRect srect = CGRectMake(0, 0, 1.0, 1.0);
+        srect = [parent convertRect:srect toLayer:root];
+        float scaleX = srect.size.width;
+        float scaleY = srect.size.height;
         
+        if([self.definitionId intValue] == 4)
+        {
+            int xx = 5;
+        }
+        
+        CGImageRef img = [symbol createCGImageAtScaleX: scaleX scaleY:scaleY];
+        
+        [calayer setFrame:CGRectMake(0, 0, CGImageGetWidth(img), CGImageGetHeight(img))];
+        calayer.position = CGPointMake(-offsetX, -offsetY);
+        //[calayer setBackgroundColor:[UIColor yellowColor].CGColor];        
         calayer.contents = (__bridge id)img;
-        calayer.position = CGPointMake(self.x,self.y);
+          
         
     }
     else if([def isKindOfClass:[Timeline class]])
-    {
-        CATransformLayer *tlayer = [Timeline drawTimeline:(Timeline *)def intoLayer:parent];
+    {            
+        CATransformLayer *tlayer = [CATransformLayer layer];
+        [parent addSublayer:tlayer];        
+        
+		float offsetX = -def.bounds.origin.x / def.bounds.size.width;
+		float offsetY = -def.bounds.origin.y / def.bounds.size.height;
+        [tlayer setAnchorPoint:CGPointMake(offsetX, offsetY)];
+
+        CATransform3D transform = CATransform3DIdentity;
+        transform = CATransform3DScale(transform, self.scaleX, self.scaleY, 1);
+        
+        [CATransaction begin];
+        tlayer.transform = transform;
+        [CATransaction commit];
+        
+        [Timeline drawTimeline:(Timeline *)def intoLayer:tlayer];
+        
+        transform = CATransform3DIdentity;
+        //transform = CATransform3DScale(transform, -self.scaleX, -self.scaleY, 1);
+        //transform = CATransform3DTranslate(transform, self.x, self.y, 0);
+        transform = CATransform3DRotate(transform, self.rotation * M_PI / 180.0, 0, 0, 1.0);
+        [CATransaction begin];
+        if([self.definitionId intValue] == 5)
+        {
+            int xx = 5;
+            //transform = CATransform3DTranslate(transform, 00, -560, 0);
+        }
+        tlayer.transform = transform;
         tlayer.position = CGPointMake(self.x, self.y);
+        [CATransaction commit];
     }
 }
 

@@ -15,6 +15,6 @@
 
 @property (nonatomic, retain) NSMutableArray *instances;
 
-+(CATransformLayer *) drawTimeline:(Timeline *) tl intoLayer: (CALayer *)parent;
++(void) drawTimeline:(Timeline *) tl intoLayer: (CALayer *)layer;
 
 @end

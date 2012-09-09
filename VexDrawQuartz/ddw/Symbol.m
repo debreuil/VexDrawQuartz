@@ -43,11 +43,11 @@
     
     
     CGContextSaveGState(context);
-    CGContextTranslateCTM(context, offsetX, offsetY);
     if(scaleX != 1.0 || scaleY != 1.0)
     {
         CGContextScaleCTM(context, scaleX, scaleY);
     }
+    CGContextTranslateCTM(context, offsetX / scaleX, offsetY / scaleY);
     
     VexObject *vo = symbol.vo;
     for (Shape *shape in symbol.shapes)

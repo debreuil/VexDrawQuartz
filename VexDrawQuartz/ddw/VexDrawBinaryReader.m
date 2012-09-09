@@ -274,7 +274,7 @@ CGColorSpaceRef colorSpace;
         for (int stops = 0; stops < count; stops++)
         {
             CGColorRef col = [self readAndCreateColor:colorNBits];
-            float ratio = [self readNBits:ratioNBits] / 255;            
+            float ratio = [self readNBits:ratioNBits] / 255.0;
             GradientStop *stop = [[GradientStop alloc] initWithColor:col ratio: ratio];
             
             [[gradient stops] addObject:stop];
