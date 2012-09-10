@@ -74,12 +74,7 @@ static int instanceCounter = 0;
         srect = [parent convertRect:srect toLayer:root];
         float scaleX = srect.size.width;
         float scaleY = srect.size.height;
-        
-        if([self.definitionId intValue] == 4)
-        {
-            int xx = 5;
-        }
-        
+                
         CGImageRef img = [symbol createCGImageAtScaleX: scaleX scaleY:scaleY];
         
         [calayer setFrame:CGRectMake(0, 0, CGImageGetWidth(img), CGImageGetHeight(img))];
@@ -112,11 +107,7 @@ static int instanceCounter = 0;
         //transform = CATransform3DTranslate(transform, self.x, self.y, 0);
         transform = CATransform3DRotate(transform, self.rotation * M_PI / 180.0, 0, 0, 1.0);
         [CATransaction begin];
-        if([self.definitionId intValue] == 5)
-        {
-            int xx = 5;
-            //transform = CATransform3DTranslate(transform, 00, -560, 0);
-        }
+
         tlayer.transform = transform;
         tlayer.position = CGPointMake(self.x, self.y);
         [CATransaction commit];
