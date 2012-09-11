@@ -12,8 +12,8 @@
 
 enum
 {
-    Linear,
-    Radial
+    LinearGradient,
+    RadialGradient
 };
 typedef NSUInteger GradientType;
 

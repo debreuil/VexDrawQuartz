@@ -68,7 +68,17 @@
                 GradientFill *gf = (GradientFill *)fill;
                 CGContextAddPath(context, shape.path);
                 CGContextClip(context);
-                CGContextDrawLinearGradient(context, gf.gradient, gf.startPoint, gf.endPoint, 0);
+                if(gf.type == LinearGradient)
+                {
+                    CGContextDrawLinearGradient(context, gf.gradient, gf.startPoint, gf.endPoint, 0);
+                }
+                else
+                {
+                    float rad = (gf.endPoint.x - gf.startPoint.x);
+                    CGContextDrawRadialGradient(context, gf.gradient,
+                                                gf.startPoint,0,
+                                                gf.startPoint, rad, kCGGradientDrawsAfterEndLocation);
+                }
                 CGContextRestoreGState(context);
             }
         }
