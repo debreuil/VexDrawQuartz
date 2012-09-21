@@ -11,6 +11,9 @@
 
 @implementation VexObject
 
+@synthesize definitionNameTable = _definitionNameTable;
+@synthesize instanceNameTable = _instanceNameTable;
+
 @synthesize strokes = _strokes;
 @synthesize fills = _fills;
 @synthesize definitions = _definitions;
@@ -20,7 +23,10 @@
     self = [super init];
     if(self)
     {
-        _strokes = [[NSMutableArray alloc] init];
+        _definitionNameTable = [[NSMutableDictionary alloc] init];
+        _instanceNameTable = [[NSMutableDictionary alloc] init];
+        
+        _strokes = [[NSMutableArray alloc] init];        
         _fills = [[NSMutableArray alloc] init];
         _definitions = [[NSMutableDictionary alloc] init];
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		840A8D3515F9635700866C43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840A8D3415F9635700866C43 /* QuartzCore.framework */; };
+		8468E9E8160C54640048B9A8 /* testData.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8468E9E7160C4B850048B9A8 /* testData.dat */; };
 		84A156D015F129B900BDD9FE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A156CF15F129B900BDD9FE /* UIKit.framework */; };
 		84A156D215F129B900BDD9FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A156D115F129B900BDD9FE /* Foundation.framework */; };
 		84A156D415F129B900BDD9FE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A156D315F129B900BDD9FE /* CoreGraphics.framework */; };
@@ -17,7 +18,6 @@
 		84A156FE15F172A700BDD9FE /* TestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A156FC15F172A700BDD9FE /* TestController.m */; };
 		84A156FF15F172A700BDD9FE /* TestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A156FD15F172A700BDD9FE /* TestController.xib */; };
 		84CB5B8215FA54E200442103 /* VexDrawStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CB5B8115FA54E200442103 /* VexDrawStoryboard.storyboard */; };
-		84FE83B315F41F9600BCD7B8 /* testData.dat in Resources */ = {isa = PBXBuildFile; fileRef = 84FE83B215F41E4E00BCD7B8 /* testData.dat */; };
 		84FE83C315F4231300BCD7B8 /* GradientFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83C215F4231300BCD7B8 /* GradientFill.m */; };
 		84FE83C615F4232300BCD7B8 /* Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83C515F4232300BCD7B8 /* Instance.m */; };
 		84FE83D215F4238100BCD7B8 /* Shape.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FE83D115F4238100BCD7B8 /* Shape.m */; };
@@ -34,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		840A8D3415F9635700866C43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8468E9E7160C4B850048B9A8 /* testData.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = testData.dat; sourceTree = "<group>"; };
 		84A156CB15F129B900BDD9FE /* VexDrawQuartz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VexDrawQuartz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A156CF15F129B900BDD9FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84A156D115F129B900BDD9FE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,7 +49,6 @@
 		84A156FC15F172A700BDD9FE /* TestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestController.m; sourceTree = "<group>"; };
 		84A156FD15F172A700BDD9FE /* TestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestController.xib; sourceTree = "<group>"; };
 		84CB5B8115FA54E200442103 /* VexDrawStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VexDrawStoryboard.storyboard; sourceTree = "<group>"; };
-		84FE83B215F41E4E00BCD7B8 /* testData.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = testData.dat; sourceTree = "<group>"; };
 		84FE83C115F4231300BCD7B8 /* GradientFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientFill.h; path = ddw/GradientFill.h; sourceTree = "<group>"; };
 		84FE83C215F4231300BCD7B8 /* GradientFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientFill.m; path = ddw/GradientFill.m; sourceTree = "<group>"; };
 		84FE83C415F4232300BCD7B8 /* Instance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Instance.h; path = ddw/Instance.h; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		84FE83B115F41DB000BCD7B8 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				84FE83B215F41E4E00BCD7B8 /* testData.dat */,
+				8468E9E7160C4B850048B9A8 /* testData.dat */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -236,9 +236,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8468E9E8160C54640048B9A8 /* testData.dat in Resources */,
 				84A156DA15F129B900BDD9FE /* InfoPlist.strings in Resources */,
 				84A156FF15F172A700BDD9FE /* TestController.xib in Resources */,
-				84FE83B315F41F9600BCD7B8 /* testData.dat in Resources */,
 				84CB5B8215FA54E200442103 /* VexDrawStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

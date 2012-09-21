@@ -80,6 +80,14 @@ CGColorSpaceRef colorSpace;
         
         switch(tag)
         {
+            case DefinitionNameTable:
+                [self parseNameTable:vo.definitionNameTable];
+                break;
+                
+            case InstanceNameTable:
+                [self parseNameTable:vo.instanceNameTable];
+                break;
+                
             case StrokeList:
                 [self parseStrokes:vo];
                 break;
@@ -114,6 +122,30 @@ CGColorSpaceRef colorSpace;
     }
     
     CGColorSpaceRelease(colorSpace);
+}
+
+-(void) parseNameTable:(NSMutableDictionary *)table
+{
+    int idNBits = [self readNBits:5];
+    int nameNBits = [self readNBits:5];
+    int stringCount = [self readNBits:11];
+    
+    for (int i = 0; i < stringCount; i++)
+    {
+        NSNumber *idNum = [NSNumber numberWithInt:[self readNBitInt:idNBits]];
+        int charCount = [self readNBits:11];
+        NSMutableString *s = [[NSMutableString alloc] initWithString:@""];
+        
+        for (int j = 0; j < charCount; j++)
+        {
+            int charVal = [self readNBitInt:nameNBits];
+            [s appendString:[NSString stringWithFormat: @"%C", (unichar)charVal]];
+        }
+        
+        [table setObject:s forKey:idNum];
+    }
+    
+    [self flushBits];
 }
 
 -(Timeline *) parseTimeline:(VexObject *) vo

@@ -24,7 +24,12 @@ enum
         
     SymbolDefinition				= 0x10,
     TimelineDefinition				= 0x11,        
-        
+    
+    DefinitionNameTable             = 0x20,
+    InstanceNameTable               = 0x21,
+    ColorNameTable                  = 0x22,
+    PathNameTable                   = 0x23,
+    
     End                             = 0xFF
 
 };
