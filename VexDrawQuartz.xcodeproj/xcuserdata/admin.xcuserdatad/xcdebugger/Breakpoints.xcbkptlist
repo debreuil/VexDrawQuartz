@@ -22,24 +22,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "VexDrawQuartz/ddw/VexDrawBinaryReader.m"
-         timestampString = "369906403.670033"
+         timestampString = "369981754.38271"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "246"
-         endingLineNumber = "246"
-         landmarkName = "-parseSymbol:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "VexDrawQuartz/ddw/VexDrawBinaryReader.m"
-         timestampString = "369906403.670033"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "461"
-         endingLineNumber = "461"
+         startingLineNumber = "486"
+         endingLineNumber = "486"
          landmarkName = "-readAndCreateColor:"
          landmarkType = "5">
       </FileBreakpoint>

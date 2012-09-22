@@ -8,6 +8,7 @@
 
 #import "Symbol.h"
 #import "Shape.h"
+#import "Path.h"
 #import "Stroke.h"
 #import "Fill.h"
 #import "SolidFill.h"
@@ -22,6 +23,7 @@
 //@synthesize image = _image;
 
 @synthesize vo = _vo;
+@synthesize paths = _paths;
 @synthesize shapes = _shapes;
 
 -(id) init
@@ -30,6 +32,7 @@
     if(self)
     {
         self.isTimeline = false;
+        _paths = [[NSMutableArray alloc] init];
         _shapes = [[NSMutableArray alloc] init];
     }
     return self;    
@@ -52,6 +55,7 @@
     VexObject *vo = symbol.vo;
     for (Shape *shape in symbol.shapes)
     {
+        Path *path = [symbol.paths objectAtIndex:shape.pathIndex];
         
         if(shape.fillIndex > 0)
         {
@@ -59,14 +63,14 @@
             if([fill isKindOfClass:[SolidFill class]])
             {
                 CGContextSetFillColorWithColor(context, ((SolidFill *)fill).color);
-                CGContextAddPath(context, shape.path);
+                CGContextAddPath(context, path.segments);
                 CGContextFillPath(context);
             }
             else if([fill isKindOfClass:[GradientFill class]])
             {
                 CGContextSaveGState(context);
                 GradientFill *gf = (GradientFill *)fill;
-                CGContextAddPath(context, shape.path);
+                CGContextAddPath(context, path.segments);
                 CGContextClip(context);
                 if(gf.type == LinearGradient)
                 {
@@ -88,7 +92,7 @@
             Stroke *stroke = [vo.strokes objectAtIndex:shape.strokeIndex];
             CGContextSetLineWidth(context, stroke.lineWidth);
             CGContextSetStrokeColorWithColor(context, stroke.color);
-            CGContextAddPath(context, shape.path);
+            CGContextAddPath(context, path.segments);
             CGContextStrokePath(context);
         }        
     }

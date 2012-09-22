@@ -12,8 +12,8 @@
 
 @property (nonatomic, assign) int strokeIndex;
 @property (nonatomic, assign) int fillIndex;
-@property (nonatomic, assign) CGMutablePathRef path;
+@property (nonatomic, assign) int pathIndex;
 
--(id) initWithStrokeIndex:(int)strokeIndex fillIndex:(int)fillIndex path:(CGMutablePathRef) path;
+-(id) initWithStrokeIndex:(int)strokeIndex fillIndex:(int)fillIndex pathIndex:(int) pathIndex;
 
 @end

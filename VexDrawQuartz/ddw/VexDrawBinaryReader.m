@@ -17,6 +17,7 @@
 #import "Shape.h"
 #import "Timeline.h"
 #import "Instance.h"
+#import "Path.h"
 
 
 @interface VexDrawBinaryReader()
@@ -77,6 +78,8 @@ CGColorSpaceRef colorSpace;
     while (index < dataLen)
     {
         VexDrawTag tag = [self readByte];
+        int len = [self readNBitInt:24];
+        int startLoc = index;
         
         switch(tag)
         {
@@ -113,10 +116,18 @@ CGColorSpaceRef colorSpace;
                 [[vo definitions] setObject:tl forKey:tl.definitionId];
                 break;
             }
-
                 
             case End:		
-                break;					
+                break;
+				
+            default:
+                index += len; // skip tag
+                break;
+        }
+        
+        if (index - startLoc != len)
+        {
+            NSLog(@"Parse error. tagStart:%d tagEnd:%d len:%d tagType:%d ", startLoc, index, len, tag);
         }
         
     }
@@ -229,13 +240,14 @@ CGColorSpaceRef colorSpace;
     
     result.bounds = [self readNBitRect];
     
-    int shapesCount = [self readNBits:11];
-    for (int i = 0; i < shapesCount; i++)
+    // parse paths
+    int pathsCount = [self readNBits:11];
+    int pathIndexNBits = [self readNBits:5];
+    
+    for (int i = 0; i < pathsCount; i++)
     {
-        int strokeIndex = [self readNBits:strokeIndexNBits];
-        int fillIndex = [self readNBits:fillIndexNBits];
-        CGMutablePathRef path = CGPathCreateMutable();
-
+        CGMutablePathRef segments = CGPathCreateMutable();
+        
         int nBits = [self readNBitValue];
         int segmentCount = [self readNBits:11];
         for (int i = 0; i < segmentCount; i++)
@@ -247,34 +259,47 @@ CGColorSpaceRef colorSpace;
             {
                 case 0:
                 {
-                    CGPathMoveToPoint(path, nil, pt.x, pt.y);
+                    CGPathMoveToPoint(segments, nil, pt.x, pt.y);
                     break;
                 }
                 case 1:
                 {
-                    CGPathAddLineToPoint(path, nil, pt.x, pt.y);
+                    CGPathAddLineToPoint(segments, nil, pt.x, pt.y);
                     break;
                 }
                 case 2:
                 {
-                    CGPathAddQuadCurveToPoint(path, nil, pt.x, pt.y,
+                    CGPathAddQuadCurveToPoint(segments, nil, pt.x, pt.y,
                                               [self readNBitInt:nBits] / TWIPS,
                                               [self readNBitInt:nBits] / TWIPS);
                     break;
                 }
                 case 3:
                 {
-                    CGPathAddCurveToPoint(path, nil, pt.x, pt.y,
-                                              [self readNBitInt:nBits] / TWIPS,
-                                              [self readNBitInt:nBits] / TWIPS,
-                                              [self readNBitInt:nBits] / TWIPS,
-                                              [self readNBitInt:nBits] / TWIPS);
+                    CGPathAddCurveToPoint(segments, nil, pt.x, pt.y,
+                                          [self readNBitInt:nBits] / TWIPS,
+                                          [self readNBitInt:nBits] / TWIPS,
+                                          [self readNBitInt:nBits] / TWIPS,
+                                          [self readNBitInt:nBits] / TWIPS);
                     break;
                 }
-
+                    
             }
         }
-        Shape *shape = [[Shape alloc] initWithStrokeIndex:strokeIndex fillIndex:fillIndex path:path];
+        Path *path = [[Path alloc] initWithSegments:segments];
+        [result.paths addObject:path];
+    }
+    
+    
+    // parse shapes. [stroke, color, path]
+    int shapesCount = [self readNBits:11];
+    for (int i = 0; i < shapesCount; i++)
+    {
+        int strokeIndex = [self readNBits:strokeIndexNBits];
+        int fillIndex = [self readNBits:fillIndexNBits];
+        int pathIndex = [self readNBits:pathIndexNBits];
+
+        Shape *shape = [[Shape alloc] initWithStrokeIndex:strokeIndex fillIndex:fillIndex pathIndex:pathIndex];
         [result.shapes addObject:shape];
     }
     

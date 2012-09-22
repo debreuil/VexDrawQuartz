@@ -13,9 +13,12 @@
 @interface Symbol : Definition
 
 @property (nonatomic, weak) VexObject *vo;
+@property (nonatomic, retain) NSMutableArray *paths;
 @property (nonatomic, retain) NSMutableArray *shapes;
 
+
 +(void) drawSymbol:(Symbol *)symbol atScaleX:(float)scaleX yScale:(float)scaleY withContext: (CGContextRef)context;
+
 - (CGImageRef)createCGImageAtScaleX:(float)scaleX scaleY:(float)scaleY;
 
 @end

@@ -12,16 +12,16 @@
 
 @synthesize strokeIndex = _strokeIndex;
 @synthesize fillIndex = _fillIndex;
-@synthesize path = _path;
+@synthesize pathIndex = _pathIndex;
 
--(id) initWithStrokeIndex:(int)strokeIndex fillIndex:(int)fillIndex path:(CGMutablePathRef) path;
+-(id) initWithStrokeIndex:(int)strokeIndex fillIndex:(int)fillIndex pathIndex:(int) pathIndex;
 {
     self = [super init];
     if(self)
     {
         _strokeIndex = strokeIndex;
         _fillIndex = fillIndex;
-        _path = path;        
+        _pathIndex = pathIndex;        
     }
     return self;    
 }
