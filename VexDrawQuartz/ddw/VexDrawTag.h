@@ -23,7 +23,8 @@ enum
     ReplacementStrokeList			= 0x0B,
         
     SymbolDefinition				= 0x10,
-    TimelineDefinition				= 0x11,        
+    TimelineDefinition				= 0x11,
+    ImageDefinition				= 0x12,
     
     DefinitionNameTable             = 0x20,
     InstanceNameTable               = 0x21,

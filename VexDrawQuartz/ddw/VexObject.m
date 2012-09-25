@@ -13,6 +13,7 @@
 
 @synthesize definitionNameTable = _definitionNameTable;
 @synthesize instanceNameTable = _instanceNameTable;
+@synthesize pathTable = _pathTable;
 
 @synthesize strokes = _strokes;
 @synthesize fills = _fills;
@@ -25,6 +26,7 @@
     {
         _definitionNameTable = [[NSMutableDictionary alloc] init];
         _instanceNameTable = [[NSMutableDictionary alloc] init];
+        _pathTable = [[NSMutableArray alloc] init];
         
         _strokes = [[NSMutableArray alloc] init];        
         _fills = [[NSMutableArray alloc] init];

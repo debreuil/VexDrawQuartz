@@ -3,6 +3,7 @@
 #import "VexObject.h"
 #import "Timeline.h"
 #import "Symbol.h"
+#import "Image.h"
 
 #define degreesToRadians(x) (M_PI * x / 180.0)
 
@@ -60,29 +61,51 @@ static int instanceCounter = 0;
     Definition *def = [self.vo.definitions objectForKey:self.definitionId];
     
     if([def isKindOfClass:[Symbol class]])
-    {    
+    {
         Symbol *symbol = (Symbol *)def;
         calayer = [CALayer layer];
         [parent addSublayer:calayer];
-
+        
 		float offsetX = (-def.bounds.origin.x / def.bounds.size.width);
 		float offsetY = (-def.bounds.origin.y / def.bounds.size.height);
         [calayer setAnchorPoint:CGPointMake(offsetX, offsetY)];
-
+        
         CALayer *root = [self getRootLayerOf:parent];
         CGRect srect = CGRectMake(0, 0, 1.0, 1.0);
         srect = [parent convertRect:srect toLayer:root];
         float scaleX = srect.size.width;
         float scaleY = srect.size.height;
-                
+        
         CGImageRef img = [symbol createCGImageAtScaleX: scaleX scaleY:scaleY];
         
         [calayer setFrame:CGRectMake(0, 0, CGImageGetWidth(img), CGImageGetHeight(img))];
         calayer.position = CGPointMake(-offsetX, -offsetY);
-        //[calayer setBackgroundColor:[UIColor yellowColor].CGColor];        
-        calayer.contents = (__bridge id)img;
-          
+        //[calayer setBackgroundColor:[UIColor yellowColor].CGColor];
+        calayer.contents = (__bridge id)img;        
         
+    }
+    else if([def isKindOfClass:[Image class]])
+    {
+        Image *image = (Image *)def;
+        calayer = [CALayer layer];
+        [parent addSublayer:calayer];
+        [calayer setAnchorPoint:CGPointMake(0, 0)];
+        
+        CGImageRef img = [image getImage];
+        
+        [calayer setFrame:CGRectMake(0, 0, CGImageGetWidth(img), CGImageGetHeight(img))];
+        
+        calayer.contents = (__bridge id)img;
+        
+        CATransform3D transform = CATransform3DIdentity;
+        transform = CATransform3DScale(transform, self.scaleX, self.scaleY, 1);
+        transform = CATransform3DRotate(transform, self.rotation * M_PI / 180.0, 0, 0, 1.0);
+        
+        [CATransaction begin];
+        calayer.transform = transform;
+        calayer.position = CGPointMake(self.x, self.y);
+        [CATransaction commit];
+
     }
     else if([def isKindOfClass:[Timeline class]])
     {            
@@ -104,10 +127,9 @@ static int instanceCounter = 0;
         
         transform = CATransform3DIdentity;
         //transform = CATransform3DScale(transform, -self.scaleX, -self.scaleY, 1);
-        //transform = CATransform3DTranslate(transform, self.x, self.y, 0);
         transform = CATransform3DRotate(transform, self.rotation * M_PI / 180.0, 0, 0, 1.0);
+        
         [CATransaction begin];
-
         tlayer.transform = transform;
         tlayer.position = CGPointMake(self.x, self.y);
         [CATransaction commit];

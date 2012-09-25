@@ -9,6 +9,7 @@
 #import "Definition.h"
 #import "Timeline.h"
 #import "Symbol.h"
+#import "Image.h"
 
 @implementation Definition
 
@@ -38,6 +39,7 @@
         }
         
     }
+    
     return result;
 }
 

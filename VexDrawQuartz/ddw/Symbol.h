@@ -12,7 +12,6 @@
 
 @interface Symbol : Definition
 
-@property (nonatomic, weak) VexObject *vo;
 @property (nonatomic, retain) NSMutableArray *paths;
 @property (nonatomic, retain) NSMutableArray *shapes;
 

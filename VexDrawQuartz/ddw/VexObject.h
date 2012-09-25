@@ -12,6 +12,7 @@
 
 @property (nonatomic, retain) NSMutableDictionary *definitionNameTable;
 @property (nonatomic, retain) NSMutableDictionary *instanceNameTable;
+@property (nonatomic, retain) NSMutableArray *pathTable;
 
 @property (nonatomic, retain) NSMutableArray *strokes;
 @property (nonatomic, retain) NSMutableArray *fills;

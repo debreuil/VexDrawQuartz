@@ -18,6 +18,7 @@
 #import "Timeline.h"
 #import "Instance.h"
 #import "Path.h"
+#import "Image.h"
 
 
 @interface VexDrawBinaryReader()
@@ -34,7 +35,7 @@
 -(void) flushBits;
 -(unsigned int) readByte;
 -(BOOL) readBit;
--(int) readNBitValue;
+-(int) readNBitCount;
 -(CGRect) readNBitRect;
 -(int) readNBitInt:(int)nBits;
 -(int) readNBits:(int) nBits;
@@ -91,6 +92,10 @@ CGColorSpaceRef colorSpace;
                 [self parseNameTable:vo.instanceNameTable];
                 break;
                 
+            case PathNameTable:
+                [self parseStringTable:vo.pathTable];
+                break;
+                
             case StrokeList:
                 [self parseStrokes:vo];
                 break;
@@ -102,11 +107,18 @@ CGColorSpaceRef colorSpace;
             case GradientFillList:
                 [self parseGradientFills:vo];
                 break;
-
+                
             case SymbolDefinition:
             {
                 Symbol *symbol = [self parseSymbol:vo];
                 [[vo definitions] setObject:symbol forKey:symbol.definitionId];
+                break;
+            }
+                
+            case ImageDefinition:
+            {
+                Image *img = [self parseImage:vo];
+                [[vo definitions] setObject:img forKey:img.definitionId];
                 break;
             }
                 
@@ -128,6 +140,7 @@ CGColorSpaceRef colorSpace;
         if (index - startLoc != len)
         {
             NSLog(@"Parse error. tagStart:%d tagEnd:%d len:%d tagType:%d ", startLoc, index, len, tag);
+            index = startLoc + len;
         }
         
     }
@@ -137,23 +150,45 @@ CGColorSpaceRef colorSpace;
 
 -(void) parseNameTable:(NSMutableDictionary *)table
 {
-    int idNBits = [self readNBits:5];
-    int nameNBits = [self readNBits:5];
-    int stringCount = [self readNBits:11];
+    int idNBits = [self readNBitCount];
+    int nameNBits = [self readNBitCount];
+    int stringCount = [self readNBits:16];
     
     for (int i = 0; i < stringCount; i++)
     {
         NSNumber *idNum = [NSNumber numberWithInt:[self readNBitInt:idNBits]];
-        int charCount = [self readNBits:11];
+        int charCount = [self readNBits:16];
         NSMutableString *s = [[NSMutableString alloc] initWithString:@""];
         
         for (int j = 0; j < charCount; j++)
         {
-            int charVal = [self readNBitInt:nameNBits];
+            int charVal = [self readNBits:nameNBits];
             [s appendString:[NSString stringWithFormat: @"%C", (unichar)charVal]];
         }
         
         [table setObject:s forKey:idNum];
+    }
+    
+    [self flushBits];
+}
+
+-(void) parseStringTable:(NSMutableArray *)table
+{
+    int nameNBits = [self readNBitCount];
+    int stringCount = [self readNBits:16];
+    
+    for (int i = 0; i < stringCount; i++)
+    {
+        int charCount = [self readNBits:16];
+        NSMutableString *s = [[NSMutableString alloc] initWithString:@""];
+        
+        for (int j = 0; j < charCount; j++)
+        {
+            int charVal = [self readNBits:nameNBits];
+            [s appendString:[NSString stringWithFormat: @"%C", (unichar)charVal]];
+        }
+        
+        [table addObject:s];
     }
     
     [self flushBits];
@@ -185,7 +220,7 @@ CGColorSpaceRef colorSpace;
         
         if (hasX || hasY || hasScaleX || hasScaleY || hasRotation || hasShear)
         {
-            int mxNBits = [self readNBitValue];
+            int mxNBits = [self readNBitCount];
             if (hasX)
             {
                 inst.x = [self readNBitInt:mxNBits] / TWIPS;
@@ -235,20 +270,18 @@ CGColorSpaceRef colorSpace;
     result.vo = vo;
     
     result.definitionId = [NSNumber numberWithInt:[self readNBits:32]];
-    
-    // todo: name
-    
+        
     result.bounds = [self readNBitRect];
     
     // parse paths
     int pathsCount = [self readNBits:11];
-    int pathIndexNBits = [self readNBits:5];
+    int pathIndexNBits = [self readNBitCount];
     
     for (int i = 0; i < pathsCount; i++)
     {
         CGMutablePathRef segments = CGPathCreateMutable();
         
-        int nBits = [self readNBitValue];
+        int nBits = [self readNBitCount];
         int segmentCount = [self readNBits:11];
         for (int i = 0; i < segmentCount; i++)
         {
@@ -308,9 +341,29 @@ CGColorSpaceRef colorSpace;
     return result;
 }
 
+-(Image *) parseImage:(VexObject *) vo
+{
+    
+    NSNumber *defId = [NSNumber numberWithInt:[self readNBits:32]];
+    
+    CGRect bnds = [self readNBitRect];
+    
+    int pathId = [self readNBits:11];    
+    NSString *path = [vo.pathTable objectAtIndex:pathId];
+    
+    Image *result = [[Image alloc] initWithPath:path];
+    result.vo = vo;
+    result.definitionId = defId;
+    result.bounds = bnds;
+    
+    [self flushBits];
+    
+    return result;
+    
+}
 -(void) parseGradientFills:(VexObject *) vo
 {
-    [self readNBitValue]; // padding
+    [self readNBits:5]; // padding
     int gradientCount = [self readNBits:11];
     
     for (int gc = 0; gc < gradientCount; gc++)
@@ -319,14 +372,14 @@ CGColorSpaceRef colorSpace;
         
         GradientType type = [self readNBits:3];
         
-        int lineNBits = [self readNBitValue];
+        int lineNBits = [self readNBitCount];
         CGPoint startPoint = CGPointMake([self readNBitInt:lineNBits] / TWIPS, [self readNBitInt:lineNBits] / TWIPS);
         CGPoint endPoint = CGPointMake([self readNBitInt:lineNBits] / TWIPS, [self readNBitInt:lineNBits] / TWIPS);
         GradientFill *gradient = [[GradientFill alloc] initWithGradientType:type startPoint:startPoint endPoint:endPoint];
        
         // stop colors
-        int colorNBits = [self readNBitValue];
-        int ratioNBits = [self readNBitValue];
+        int colorNBits = [self readNBitCount];
+        int ratioNBits = [self readNBitCount];
         int count = [self readNBits:11];        
         for (int stops = 0; stops < count; stops++)
         {
@@ -346,7 +399,7 @@ CGColorSpaceRef colorSpace;
 -(void) parseSolidFills:(VexObject *) vo
 {
     fillIndexNBits = [self readNBits:8];
-    int nBits = [self readNBitValue];
+    int nBits = [self readNBitCount];
     int count = [self readNBits:11];
     for (int i = 0; i < count; i++)
     {
@@ -362,8 +415,8 @@ CGColorSpaceRef colorSpace;
 {    
     strokeIndexNBits = [self readNBits:8];
     // stroke colors
-    int colorNBits = [self readNBitValue];
-    int lineWidthNBits = [self readNBitValue];
+    int colorNBits = [self readNBitCount];
+    int lineWidthNBits = [self readNBitCount];
     int count = [self readNBits:11];
     for (int i = 0; i < count; i++)
     {
@@ -403,16 +456,15 @@ CGColorSpaceRef colorSpace;
     return [self readNBits:1] == 1 ? YES : NO;
 }
 
--(int) readNBitValue
+-(int) readNBitCount
 {
     int result = [self readNBits:5];
-    result = (result == 0) ? 0 : result + 2;
-    return result;
+    return result + 2;
 }
 
 -(CGRect) readNBitRect
 {
-    int nBits = [self readNBitValue];
+    int nBits = [self readNBitCount];
     CGRect result = {[self readNBitInt:nBits] / TWIPS,
                     [self readNBitInt:nBits] / TWIPS,
                     [self readNBitInt:nBits] / TWIPS,

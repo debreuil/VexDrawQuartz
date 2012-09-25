@@ -22,7 +22,6 @@
 
 //@synthesize image = _image;
 
-@synthesize vo = _vo;
 @synthesize paths = _paths;
 @synthesize shapes = _shapes;
 

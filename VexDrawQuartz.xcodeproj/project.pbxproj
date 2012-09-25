@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		840A8D3515F9635700866C43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840A8D3415F9635700866C43 /* QuartzCore.framework */; };
+		8443D543161131D900CC6BF1 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 8443D542161131D900CC6BF1 /* Image.m */; };
+		8443D5461612123500CC6BF1 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 8443D5451612123500CC6BF1 /* car.png */; };
 		8468E9E8160C54640048B9A8 /* testData.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8468E9E7160C4B850048B9A8 /* testData.dat */; };
 		8468E9EA160C57C90048B9A8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8468E9E9160C57C90048B9A8 /* .gitignore */; };
 		8468E9ED160D71E50048B9A8 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 8468E9EC160D71E50048B9A8 /* Path.m */; };
@@ -36,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		840A8D3415F9635700866C43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8443D541161131D900CC6BF1 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = ddw/Image.h; sourceTree = "<group>"; };
+		8443D542161131D900CC6BF1 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Image.m; path = ddw/Image.m; sourceTree = "<group>"; };
+		8443D5451612123500CC6BF1 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
 		8468E9E7160C4B850048B9A8 /* testData.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = testData.dat; sourceTree = "<group>"; };
 		8468E9E9160C57C90048B9A8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8468E9EB160D71E40048B9A8 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Path.h; path = ddw/Path.h; sourceTree = "<group>"; };
@@ -155,6 +160,7 @@
 		84FE83B115F41DB000BCD7B8 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				8443D5451612123500CC6BF1 /* car.png */,
 				8468E9E7160C4B850048B9A8 /* testData.dat */,
 			);
 			name = data;
@@ -190,6 +196,8 @@
 				84FE83E315F423EE00BCD7B8 /* VexObject.m */,
 				8468E9EB160D71E40048B9A8 /* Path.h */,
 				8468E9EC160D71E50048B9A8 /* Path.m */,
+				8443D541161131D900CC6BF1 /* Image.h */,
+				8443D542161131D900CC6BF1 /* Image.m */,
 			);
 			name = ddw;
 			sourceTree = "<group>";
@@ -249,6 +257,7 @@
 				84A156FF15F172A700BDD9FE /* TestController.xib in Resources */,
 				84CB5B8215FA54E200442103 /* VexDrawStoryboard.storyboard in Resources */,
 				8468E9EA160C57C90048B9A8 /* .gitignore in Resources */,
+				8443D5461612123500CC6BF1 /* car.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +284,7 @@
 				84FE83EF15F4719200BCD7B8 /* VexDrawBinaryReader.m in Sources */,
 				84FE83F515F6B3F200BCD7B8 /* GradientStop.m in Sources */,
 				8468E9ED160D71E50048B9A8 /* Path.m in Sources */,
+				8443D543161131D900CC6BF1 /* Image.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
