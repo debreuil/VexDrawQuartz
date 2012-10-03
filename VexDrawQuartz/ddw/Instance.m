@@ -40,6 +40,21 @@ static int instanceCounter = 0;
     }
     return self;
 }
+-(id) initWithId:(int) instId
+{
+    self = [super init];
+    if(self)
+    {
+        self.scaleX = 1;
+        self.scaleY = 1;
+        self.instanceId = [NSNumber numberWithInt:instId];
+        if(instId >= instanceCounter)
+        {
+            instanceCounter = instId + 1;
+        }
+    }
+    return self;
+}
 
 -(NSString *)description
 {

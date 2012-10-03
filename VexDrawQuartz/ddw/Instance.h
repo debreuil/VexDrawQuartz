@@ -32,7 +32,7 @@
 @property (nonatomic, assign) BOOL hasRotation;
 @property (nonatomic, assign) BOOL hasShear;
 
-
+-(id) initWithId:(int) instId;
 -(void) createLayerInLayer:(CALayer *) parent;
 
 @end

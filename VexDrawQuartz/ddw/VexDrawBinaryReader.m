@@ -48,8 +48,9 @@
 @implementation VexDrawBinaryReader    
 
 float const TWIPS = 32;
+int const idBitCount = 16;
 
-static const unsigned int maskArray[] = 
+static const unsigned int maskArray[] =
 {
     0x00, 0x01, 0x03, 0x07, 0x0F, 0x1F, 0x3F, 0x7F, 0xFF,
     0x01FF, 0x03FF, 0x07FF, 0x0FFF, 0x1FFF, 0x3FFF, 0x7FFF, 0xFFFF,
@@ -150,13 +151,12 @@ CGColorSpaceRef colorSpace;
 
 -(void) parseNameTable:(NSMutableDictionary *)table
 {
-    int idNBits = [self readNBitCount];
     int nameNBits = [self readNBitCount];
     int stringCount = [self readNBits:16];
     
     for (int i = 0; i < stringCount; i++)
     {
-        NSNumber *idNum = [NSNumber numberWithInt:[self readNBitInt:idNBits]];
+        NSNumber *idNum = [NSNumber numberWithInt:[self readNBitInt:idBitCount]];
         int charCount = [self readNBits:16];
         NSMutableString *s = [[NSMutableString alloc] initWithString:@""];
         
@@ -199,16 +199,19 @@ CGColorSpaceRef colorSpace;
     Timeline *result = [[Timeline alloc] init];
     result.vo = vo;
     
-    result.definitionId = [NSNumber numberWithInt:[self readNBits:32]];
+    result.definitionId = [NSNumber numberWithInt:[self readNBits:idBitCount]];
     result.bounds = [self readNBitRect];
     
     int instancesCount = [self readNBits:11];
     for (int i = 0; i < instancesCount; i++)
     {
         // defid32,hasVals[7:bool], x?,y?,scaleX?, scaleY?, rotation?, shear?, "name"?
-        Instance *inst = [[Instance alloc] init];
+        NSNumber *defId = [NSNumber numberWithInt:[self readNBits:idBitCount]];
+        int instId = [self readNBits:idBitCount];
+        
+        Instance *inst = [[Instance alloc] initWithId:instId];
         inst.vo = vo;
-        inst.definitionId = [NSNumber numberWithInt:[self readNBits:32]];
+        inst.definitionId = defId;
         
         BOOL hasX = [self readBit];
         BOOL hasY = [self readBit];
@@ -269,7 +272,7 @@ CGColorSpaceRef colorSpace;
     Symbol *result = [[Symbol alloc] init];
     result.vo = vo;
     
-    result.definitionId = [NSNumber numberWithInt:[self readNBits:32]];
+    result.definitionId = [NSNumber numberWithInt:[self readNBits:idBitCount]];
         
     result.bounds = [self readNBitRect];
     
@@ -344,7 +347,7 @@ CGColorSpaceRef colorSpace;
 -(Image *) parseImage:(VexObject *) vo
 {
     
-    NSNumber *defId = [NSNumber numberWithInt:[self readNBits:32]];
+    NSNumber *defId = [NSNumber numberWithInt:[self readNBits:idBitCount]];
     
     CGRect bnds = [self readNBitRect];
     
