@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84076C511624A01500D18CD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84076C501624A01400D18CD4 /* Foundation.framework */; };
+		84076CF61624A11500D18CD4 /* Definition.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CDA1624A11500D18CD4 /* Definition.m */; };
+		84076CF71624A11500D18CD4 /* Fill.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CDC1624A11500D18CD4 /* Fill.m */; };
+		84076CF81624A11500D18CD4 /* GradientFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CDE1624A11500D18CD4 /* GradientFill.m */; };
+		84076CF91624A11500D18CD4 /* GradientStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CE01624A11500D18CD4 /* GradientStop.m */; };
+		84076CFA1624A11500D18CD4 /* Instance.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CE21624A11500D18CD4 /* Instance.m */; };
+		84076CFB1624A11500D18CD4 /* Shape.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CE41624A11500D18CD4 /* Shape.m */; };
+		84076CFC1624A11500D18CD4 /* SolidFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CE61624A11500D18CD4 /* SolidFill.m */; };
+		84076CFD1624A11500D18CD4 /* Stroke.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CE81624A11500D18CD4 /* Stroke.m */; };
+		84076CFE1624A11500D18CD4 /* Symbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CEA1624A11500D18CD4 /* Symbol.m */; };
+		84076CFF1624A11500D18CD4 /* Timeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CEC1624A11500D18CD4 /* Timeline.m */; };
+		84076D001624A11500D18CD4 /* VexDrawBinaryReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CEE1624A11500D18CD4 /* VexDrawBinaryReader.m */; };
+		84076D011624A11500D18CD4 /* VexObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CF11624A11500D18CD4 /* VexObject.m */; };
+		84076D021624A11500D18CD4 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CF31624A11500D18CD4 /* Path.m */; };
+		84076D031624A11500D18CD4 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 84076CF51624A11500D18CD4 /* Image.m */; };
+		84D608451624A50200167080 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D608441624A50200167080 /* CoreGraphics.framework */; };
+		84D608481624A58700167080 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D608471624A58700167080 /* QuartzCore.framework */; };
+		84D6084A1624A76C00167080 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D608491624A76C00167080 /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		84076C4B1624A01400D18CD4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		84076C4D1624A01400D18CD4 /* libVexDraw.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVexDraw.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		84076C501624A01400D18CD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		84076C541624A01500D18CD4 /* VexDraw-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VexDraw-Prefix.pch"; sourceTree = "<group>"; };
+		84076CD91624A11500D18CD4 /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definition.h; sourceTree = "<group>"; };
+		84076CDA1624A11500D18CD4 /* Definition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Definition.m; sourceTree = "<group>"; };
+		84076CDB1624A11500D18CD4 /* Fill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fill.h; sourceTree = "<group>"; };
+		84076CDC1624A11500D18CD4 /* Fill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fill.m; sourceTree = "<group>"; };
+		84076CDD1624A11500D18CD4 /* GradientFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientFill.h; sourceTree = "<group>"; };
+		84076CDE1624A11500D18CD4 /* GradientFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientFill.m; sourceTree = "<group>"; };
+		84076CDF1624A11500D18CD4 /* GradientStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientStop.h; sourceTree = "<group>"; };
+		84076CE01624A11500D18CD4 /* GradientStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientStop.m; sourceTree = "<group>"; };
+		84076CE11624A11500D18CD4 /* Instance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instance.h; sourceTree = "<group>"; };
+		84076CE21624A11500D18CD4 /* Instance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instance.m; sourceTree = "<group>"; };
+		84076CE31624A11500D18CD4 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shape.h; sourceTree = "<group>"; };
+		84076CE41624A11500D18CD4 /* Shape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shape.m; sourceTree = "<group>"; };
+		84076CE51624A11500D18CD4 /* SolidFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolidFill.h; sourceTree = "<group>"; };
+		84076CE61624A11500D18CD4 /* SolidFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolidFill.m; sourceTree = "<group>"; };
+		84076CE71624A11500D18CD4 /* Stroke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stroke.h; sourceTree = "<group>"; };
+		84076CE81624A11500D18CD4 /* Stroke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stroke.m; sourceTree = "<group>"; };
+		84076CE91624A11500D18CD4 /* Symbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symbol.h; sourceTree = "<group>"; };
+		84076CEA1624A11500D18CD4 /* Symbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Symbol.m; sourceTree = "<group>"; };
+		84076CEB1624A11500D18CD4 /* Timeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timeline.h; sourceTree = "<group>"; };
+		84076CEC1624A11500D18CD4 /* Timeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timeline.m; sourceTree = "<group>"; };
+		84076CED1624A11500D18CD4 /* VexDrawBinaryReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VexDrawBinaryReader.h; sourceTree = "<group>"; };
+		84076CEE1624A11500D18CD4 /* VexDrawBinaryReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VexDrawBinaryReader.m; sourceTree = "<group>"; };
+		84076CEF1624A11500D18CD4 /* VexDrawTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VexDrawTag.h; sourceTree = "<group>"; };
+		84076CF01624A11500D18CD4 /* VexObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VexObject.h; sourceTree = "<group>"; };
+		84076CF11624A11500D18CD4 /* VexObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VexObject.m; sourceTree = "<group>"; };
+		84076CF21624A11500D18CD4 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		84076CF31624A11500D18CD4 /* Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Path.m; sourceTree = "<group>"; };
+		84076CF41624A11500D18CD4 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		84076CF51624A11500D18CD4 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
+		84D608441624A50200167080 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		84D608471624A58700167080 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		84D608491624A76C00167080 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84076C4A1624A01400D18CD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84076C511624A01500D18CD4 /* Foundation.framework in Frameworks */,
+				84D6084A1624A76C00167080 /* UIKit.framework in Frameworks */,
+				84D608451624A50200167080 /* CoreGraphics.framework in Frameworks */,
+				84D608481624A58700167080 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84076C421624A01400D18CD4 = {
+			isa = PBXGroup;
+			children = (
+				84076C521624A01500D18CD4 /* VexDraw */,
+				84076C4F1624A01400D18CD4 /* Frameworks */,
+				84076C4E1624A01400D18CD4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84076C4E1624A01400D18CD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84076C4D1624A01400D18CD4 /* libVexDraw.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84076C4F1624A01400D18CD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84D608491624A76C00167080 /* UIKit.framework */,
+				84D608471624A58700167080 /* QuartzCore.framework */,
+				84D608441624A50200167080 /* CoreGraphics.framework */,
+				84076C501624A01400D18CD4 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84076C521624A01500D18CD4 /* VexDraw */ = {
+			isa = PBXGroup;
+			children = (
+				84076CD91624A11500D18CD4 /* Definition.h */,
+				84076CDB1624A11500D18CD4 /* Fill.h */,
+				84076CDD1624A11500D18CD4 /* GradientFill.h */,
+				84076CDF1624A11500D18CD4 /* GradientStop.h */,
+				84076CF41624A11500D18CD4 /* Image.h */,
+				84076CE11624A11500D18CD4 /* Instance.h */,
+				84076CF21624A11500D18CD4 /* Path.h */,
+				84076CE31624A11500D18CD4 /* Shape.h */,
+				84076CE51624A11500D18CD4 /* SolidFill.h */,
+				84076CE71624A11500D18CD4 /* Stroke.h */,
+				84076CE91624A11500D18CD4 /* Symbol.h */,
+				84076CEB1624A11500D18CD4 /* Timeline.h */,
+				84076CED1624A11500D18CD4 /* VexDrawBinaryReader.h */,
+				84076CEF1624A11500D18CD4 /* VexDrawTag.h */,
+				84076CF01624A11500D18CD4 /* VexObject.h */,
+				84076CDA1624A11500D18CD4 /* Definition.m */,
+				84076CDC1624A11500D18CD4 /* Fill.m */,
+				84076CDE1624A11500D18CD4 /* GradientFill.m */,
+				84076CE01624A11500D18CD4 /* GradientStop.m */,
+				84076CF51624A11500D18CD4 /* Image.m */,
+				84076CE21624A11500D18CD4 /* Instance.m */,
+				84076CF31624A11500D18CD4 /* Path.m */,
+				84076CE41624A11500D18CD4 /* Shape.m */,
+				84076CE61624A11500D18CD4 /* SolidFill.m */,
+				84076CE81624A11500D18CD4 /* Stroke.m */,
+				84076CEA1624A11500D18CD4 /* Symbol.m */,
+				84076CEC1624A11500D18CD4 /* Timeline.m */,
+				84076CEE1624A11500D18CD4 /* VexDrawBinaryReader.m */,
+				84076CF11624A11500D18CD4 /* VexObject.m */,
+				84076C531624A01500D18CD4 /* Supporting Files */,
+			);
+			path = VexDraw;
+			sourceTree = "<group>";
+		};
+		84076C531624A01500D18CD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84076C541624A01500D18CD4 /* VexDraw-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84076C4C1624A01400D18CD4 /* VexDraw */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84076C5B1624A01500D18CD4 /* Build configuration list for PBXNativeTarget "VexDraw" */;
+			buildPhases = (
+				84076C491624A01400D18CD4 /* Sources */,
+				84076C4A1624A01400D18CD4 /* Frameworks */,
+				84076C4B1624A01400D18CD4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VexDraw;
+			productName = VexDraw;
+			productReference = 84076C4D1624A01400D18CD4 /* libVexDraw.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84076C441624A01400D18CD4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Debreuil Digital Works";
+			};
+			buildConfigurationList = 84076C471624A01400D18CD4 /* Build configuration list for PBXProject "VexDraw" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 84076C421624A01400D18CD4;
+			productRefGroup = 84076C4E1624A01400D18CD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84076C4C1624A01400D18CD4 /* VexDraw */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84076C491624A01400D18CD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84076CF61624A11500D18CD4 /* Definition.m in Sources */,
+				84076CF71624A11500D18CD4 /* Fill.m in Sources */,
+				84076CF81624A11500D18CD4 /* GradientFill.m in Sources */,
+				84076CF91624A11500D18CD4 /* GradientStop.m in Sources */,
+				84076CFA1624A11500D18CD4 /* Instance.m in Sources */,
+				84076CFB1624A11500D18CD4 /* Shape.m in Sources */,
+				84076CFC1624A11500D18CD4 /* SolidFill.m in Sources */,
+				84076CFD1624A11500D18CD4 /* Stroke.m in Sources */,
+				84076CFE1624A11500D18CD4 /* Symbol.m in Sources */,
+				84076CFF1624A11500D18CD4 /* Timeline.m in Sources */,
+				84076D001624A11500D18CD4 /* VexDrawBinaryReader.m in Sources */,
+				84076D011624A11500D18CD4 /* VexObject.m in Sources */,
+				84076D021624A11500D18CD4 /* Path.m in Sources */,
+				84076D031624A11500D18CD4 /* Image.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		84076C591624A01500D18CD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		84076C5A1624A01500D18CD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84076C5C1624A01500D18CD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/VexDraw.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VexDraw/VexDraw-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		84076C5D1624A01500D18CD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/VexDraw.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VexDraw/VexDraw-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84076C471624A01400D18CD4 /* Build configuration list for PBXProject "VexDraw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84076C591624A01500D18CD4 /* Debug */,
+				84076C5A1624A01500D18CD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84076C5B1624A01500D18CD4 /* Build configuration list for PBXNativeTarget "VexDraw" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84076C5C1624A01500D18CD4 /* Debug */,
+				84076C5D1624A01500D18CD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84076C441624A01400D18CD4 /* Project object */;
+}
