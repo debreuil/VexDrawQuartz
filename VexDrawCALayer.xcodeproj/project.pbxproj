@@ -113,29 +113,14 @@
 		84076CAB1624A0BC00D18CD4 /* VexDrawCALayer */ = {
 			isa = PBXGroup;
 			children = (
-				843244741624C243004DAF43 /* data */,
-				843244631624C0E6004DAF43 /* Definition.h */,
-				843244641624C0E7004DAF43 /* Fill.h */,
-				843244651624C0E7004DAF43 /* GradientFill.h */,
-				843244661624C0E7004DAF43 /* GradientStop.h */,
-				843244671624C0E7004DAF43 /* Image.h */,
-				843244681624C0E7004DAF43 /* Instance.h */,
-				843244691624C0E7004DAF43 /* Path.h */,
-				8432446A1624C0E7004DAF43 /* Shape.h */,
-				8432446B1624C0E7004DAF43 /* SolidFill.h */,
-				8432446C1624C0E7004DAF43 /* Stroke.h */,
-				8432446D1624C0E7004DAF43 /* Symbol.h */,
-				8432446E1624C0E7004DAF43 /* Timeline.h */,
-				8432446F1624C0E7004DAF43 /* VexDrawBinaryReader.h */,
-				843244701624C0E7004DAF43 /* VexDrawLib.h */,
-				843244711624C0E7004DAF43 /* VexDrawTag.h */,
-				843244721624C0E7004DAF43 /* VexObject.h */,
+				84B8256E1624E0890052B3E2 /* VexDrawLib */,
 				84076D081624A2E600D18CD4 /* TestController.m */,
 				84076D091624A2E600D18CD4 /* TestController.h */,
 				84076D0A1624A2E600D18CD4 /* DDWAppDelegate.m */,
 				84076D0B1624A2E600D18CD4 /* DDWAppDelegate.h */,
 				84076D0C1624A2E600D18CD4 /* TestController.xib */,
 				84076D0E1624A2E600D18CD4 /* VexDrawStoryboard.storyboard */,
+				843244741624C243004DAF43 /* data */,
 				84076CAC1624A0BC00D18CD4 /* Supporting Files */,
 			);
 			path = VexDrawCALayer;
@@ -162,6 +147,29 @@
 				843244751624C274004DAF43 /* car.png */,
 			);
 			name = data;
+			sourceTree = "<group>";
+		};
+		84B8256E1624E0890052B3E2 /* VexDrawLib */ = {
+			isa = PBXGroup;
+			children = (
+				843244631624C0E6004DAF43 /* Definition.h */,
+				843244641624C0E7004DAF43 /* Fill.h */,
+				843244651624C0E7004DAF43 /* GradientFill.h */,
+				843244661624C0E7004DAF43 /* GradientStop.h */,
+				843244671624C0E7004DAF43 /* Image.h */,
+				843244681624C0E7004DAF43 /* Instance.h */,
+				843244691624C0E7004DAF43 /* Path.h */,
+				8432446A1624C0E7004DAF43 /* Shape.h */,
+				8432446B1624C0E7004DAF43 /* SolidFill.h */,
+				8432446C1624C0E7004DAF43 /* Stroke.h */,
+				8432446D1624C0E7004DAF43 /* Symbol.h */,
+				8432446E1624C0E7004DAF43 /* Timeline.h */,
+				8432446F1624C0E7004DAF43 /* VexDrawBinaryReader.h */,
+				843244701624C0E7004DAF43 /* VexDrawLib.h */,
+				843244711624C0E7004DAF43 /* VexDrawTag.h */,
+				843244721624C0E7004DAF43 /* VexObject.h */,
+			);
+			name = VexDrawLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,12 +319,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VexDrawCALayer/VexDrawCALayer-Prefix.pch";
 				INFOPLIST_FILE = "VexDrawCALayer/VexDrawCALayer-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/Untitled-ehweiwttwkxaqpbrpispyfxiupfd/Build/Products/Debug-iphoneos\"",
-					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/VexDrawWorkspace-csifieeueddwvbcooglxzyhplvxv/Build/Products/Debug-iphoneos\"",
-					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/VexDrawWorkspace-csifieeueddwvbcooglxzyhplvxv/Build/Products/Debug-iphonesimulator\"",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -328,12 +330,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VexDrawCALayer/VexDrawCALayer-Prefix.pch";
 				INFOPLIST_FILE = "VexDrawCALayer/VexDrawCALayer-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/Untitled-ehweiwttwkxaqpbrpispyfxiupfd/Build/Products/Debug-iphoneos\"",
-					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/VexDrawWorkspace-csifieeueddwvbcooglxzyhplvxv/Build/Products/Debug-iphoneos\"",
-					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/VexDrawWorkspace-csifieeueddwvbcooglxzyhplvxv/Build/Products/Debug-iphonesimulator\"",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
