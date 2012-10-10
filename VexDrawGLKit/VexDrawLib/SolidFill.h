@@ -1,5 +1,5 @@
 //
-//  Stroke.h
+//  SolidFill.h
 //  VexDrawQuartz
 //
 //  Created by admin on 12-09-02.
@@ -8,12 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
+#import "Fill.h"
 
-@interface Stroke : NSObject
+@interface SolidFill : Fill
 
 @property (nonatomic, readonly) CGColorRef color;
-@property (nonatomic) float lineWidth;
 
--(id) initWithColor:(CGColorRef)color lineWidth:(float)lineWidth;
-
+-(id) initWithColor:(CGColorRef)color;
 @end

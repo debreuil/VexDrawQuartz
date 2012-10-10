@@ -17,20 +17,20 @@
 
 @property (nonatomic, weak) VexObject *vo;
 
-@property (nonatomic, retain) NSNumber *definitionId;
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSNumber *instanceId;
+@property (nonatomic, strong) NSNumber *definitionId;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSNumber *instanceId;
 
-@property (nonatomic, assign) float x;
-@property (nonatomic, assign) float y;
-@property (nonatomic, assign) float scaleX;
-@property (nonatomic, assign) float scaleY;
-@property (nonatomic, assign) float rotation;
-@property (nonatomic, assign) float shear;
+@property (nonatomic) float x;
+@property (nonatomic) float y;
+@property (nonatomic) float scaleX;
+@property (nonatomic) float scaleY;
+@property (nonatomic) float rotation;
+@property (nonatomic) float shear;
 
-@property (nonatomic, assign) BOOL hasScale;
-@property (nonatomic, assign) BOOL hasRotation;
-@property (nonatomic, assign) BOOL hasShear;
+@property (nonatomic) BOOL hasScale;
+@property (nonatomic) BOOL hasRotation;
+@property (nonatomic) BOOL hasShear;
 
 -(id) initWithId:(int) instId;
 -(void) createLayerInLayer:(CALayer *) parent;

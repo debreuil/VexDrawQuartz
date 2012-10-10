@@ -31,6 +31,7 @@
 	unsigned int fillIndexNBits;
 	unsigned int strokeIndexNBits;	
 }
+
 -(Symbol *) parseSymbol:(VexObject *) vo;
 -(void) flushBits;
 -(unsigned int) readByte;

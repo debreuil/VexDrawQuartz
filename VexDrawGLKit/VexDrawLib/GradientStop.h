@@ -15,6 +15,6 @@
 -(id) initWithColor:(CGColorRef) color ratio:(float) ratio;
 
 @property (nonatomic, readonly) CGColorRef color;
-@property (nonatomic) float ratio;
+@property (readwrite) float ratio;
 
 @end

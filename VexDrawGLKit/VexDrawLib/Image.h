@@ -13,7 +13,7 @@
 
 @interface Image : Definition
 
-@property (nonatomic, strong) NSString *path;
+@property (nonatomic, retain) NSString *path;
 
 -(id) initWithPath:(NSString *) path;
 - (CGImageRef)getImage;

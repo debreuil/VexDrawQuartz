@@ -11,7 +11,7 @@
 
 @interface Path : NSObject
 
-@property (nonatomic) CGMutablePathRef segments;
+@property (nonatomic, assign) CGMutablePathRef segments;
 
 -(id) initWithSegments:(CGMutablePathRef) segments;
 

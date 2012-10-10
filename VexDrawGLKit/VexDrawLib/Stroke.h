@@ -12,7 +12,7 @@
 @interface Stroke : NSObject
 
 @property (nonatomic, readonly) CGColorRef color;
-@property (nonatomic) float lineWidth;
+@property (readwrite) float lineWidth;
 
 -(id) initWithColor:(CGColorRef)color lineWidth:(float)lineWidth;
 

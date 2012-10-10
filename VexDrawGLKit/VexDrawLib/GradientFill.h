@@ -23,10 +23,11 @@ typedef NSUInteger GradientType;
 
 -(id) initWithGradientType:(GradientType) type startPoint:(CGPoint) startPoint endPoint:(CGPoint) endPoint;
 
-@property (nonatomic, strong) NSMutableArray *stops;
-@property (nonatomic) GradientType type;
-@property (nonatomic) CGPoint startPoint;
-@property (nonatomic) CGPoint endPoint;
+@property (nonatomic, retain) NSMutableArray *stops;
+@property (nonatomic, assign) GradientType type;
+@property (nonatomic, assign) CGPoint startPoint;
+@property (nonatomic, assign) CGPoint endPoint;
+
 @property (nonatomic, readonly) CGGradientRef gradient;
 
 @end

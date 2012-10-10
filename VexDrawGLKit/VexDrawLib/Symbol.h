@@ -12,8 +12,8 @@
 
 @interface Symbol : Definition
 
-@property (nonatomic, strong) NSMutableArray *paths;
-@property (nonatomic, strong) NSMutableArray *shapes;
+@property (nonatomic, retain) NSMutableArray *paths;
+@property (nonatomic, retain) NSMutableArray *shapes;
 
 
 +(void) drawSymbol:(Symbol *)symbol atScaleX:(float)scaleX yScale:(float)scaleY withContext: (CGContextRef)context;

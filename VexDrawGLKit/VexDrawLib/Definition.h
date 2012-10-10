@@ -15,10 +15,10 @@
 @interface Definition : NSObject
 
 @property (nonatomic, weak) VexObject *vo;
-@property (nonatomic, strong) NSNumber *definitionId;
 
-@property (nonatomic) BOOL isTimeline;
-@property (nonatomic) CGRect bounds;
+@property (nonatomic, retain) NSNumber *definitionId;
+@property (nonatomic, assign) BOOL isTimeline;
+@property (nonatomic, assign) CGRect bounds;
 
 -(Symbol *) getWrappedSymbolOrSelf;
 

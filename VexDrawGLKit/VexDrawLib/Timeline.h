@@ -13,7 +13,7 @@
 
 @interface Timeline : Definition
 
-@property (nonatomic, strong) NSMutableArray *instances;
+@property (nonatomic, retain) NSMutableArray *instances;
 
 +(void) drawTimeline:(Timeline *) tl intoLayer: (CALayer *)layer;
 

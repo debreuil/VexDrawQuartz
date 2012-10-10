@@ -10,12 +10,12 @@
 
 @interface VexObject : NSObject
 
-@property (nonatomic, retain) NSMutableDictionary *definitionNameTable;
-@property (nonatomic, retain) NSMutableDictionary *instanceNameTable;
-@property (nonatomic, retain) NSMutableArray *pathTable;
+@property (nonatomic, strong) NSMutableDictionary *definitionNameTable;
+@property (nonatomic, strong) NSMutableDictionary *instanceNameTable;
+@property (nonatomic, strong) NSMutableArray *pathTable;
 
-@property (nonatomic, retain) NSMutableArray *strokes;
-@property (nonatomic, retain) NSMutableArray *fills;
-@property (nonatomic, retain) NSMutableDictionary *definitions;
+@property (nonatomic, strong) NSMutableArray *strokes;
+@property (nonatomic, strong) NSMutableArray *fills;
+@property (nonatomic, strong) NSMutableDictionary *definitions;
 
 @end
