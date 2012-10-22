@@ -10,6 +10,8 @@
 @property (nonatomic, retain) VexObject *vexObject;
 @property (strong) GLKBaseEffect * effect;
 @property (strong) BasicSprite * player;
+
+- (void) drawDefinition:(Definition *) def withMatrixStack:(GLKMatrixStackRef) mxStack;
 @end
 
 @implementation MainViewController
@@ -44,17 +46,53 @@
     GLKMatrix4 projectionMatrix = GLKMatrix4MakeOrtho(0, screenSize.width, 0, screenSize.height, -1024, 1024);
     self.effect.transform.projectionMatrix = projectionMatrix;
     
-    Definition *def = [_vexObject.definitions objectForKey:[NSNumber numberWithInt:2]];
-    if([def isKindOfClass:[Symbol class]])
+    GLKMatrixStackRef mxStack = GLKMatrixStackCreate(0);
+    
+    Definition *def = [_vexObject.definitions objectForKey:[NSNumber numberWithInt:1]];
+    [self drawDefinition:def withMatrixStack:mxStack];
+    
+    CFRelease(mxStack);
+}
+
+- (void)update
+{
+}
+
+- (void) drawDefinition:(Definition *) def withMatrixStack:(GLKMatrixStackRef) mxStack
+{
+    if(def.isTimeline)
+    {
+        Timeline *tl = (Timeline *)def;
+        for (int i = 0; i < tl.instances.count; i++)
+        {
+            float offsetX = def.bounds.origin.x / def.bounds.size.width;
+            float offsetY = def.bounds.origin.y / def.bounds.size.height;
+            
+            Instance *inst = [tl.instances objectAtIndex:i];
+            GLKMatrix4 orgMx = GLKMatrixStackGetMatrix4(mxStack);
+            float orgX = orgMx.m30 - offsetX;
+            float orgY = orgMx.m31 - offsetY;
+            
+            GLKMatrixStackPush(mxStack);
+            
+            GLKMatrixStackTranslate(mxStack, -orgX, -orgY, 0);
+            GLKMatrixStackScale(mxStack, inst.scaleX, inst.scaleY, 1);
+            GLKMatrixStackRotate(mxStack, GLKMathDegreesToRadians(inst.rotation), 0, 0, 0);
+            GLKMatrixStackTranslate(mxStack, orgX + inst.x, orgY + inst.y, 0);
+            
+            GLKMatrixStackPop(mxStack);
+        }
+    }
+    else if([def isKindOfClass:[Symbol class]])
     {
         Symbol *sym = (Symbol *) def;
         CGImageRef image = [sym createCGImageAtScaleX:1 scaleY:1];
         //CGImageRetain(image);
         
         UIImage *uiImage = [UIImage imageWithData:UIImagePNGRepresentation([UIImage imageWithCGImage:image])];
-                
-        self.player = [[BasicSprite alloc] initWithImage:uiImage.CGImage effect:self.effect];
-        self.player.position = GLKVector2Make(30, 160);
+        
+        //self.player = [[BasicSprite alloc] initWithImage:uiImage.CGImage effect:self.effect];
+        //self.player.position = GLKVector2Make(30, 160);
     }
 }
 
@@ -83,9 +121,6 @@
     [self.player render];
 }
 
-- (void)update
-{
-}
 
 
 @end

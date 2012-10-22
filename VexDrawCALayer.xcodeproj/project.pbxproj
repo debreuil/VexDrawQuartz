@@ -114,10 +114,10 @@
 			isa = PBXGroup;
 			children = (
 				84B8256E1624E0890052B3E2 /* VexDrawLib */,
-				84076D081624A2E600D18CD4 /* TestController.m */,
 				84076D091624A2E600D18CD4 /* TestController.h */,
-				84076D0A1624A2E600D18CD4 /* DDWAppDelegate.m */,
+				84076D081624A2E600D18CD4 /* TestController.m */,
 				84076D0B1624A2E600D18CD4 /* DDWAppDelegate.h */,
+				84076D0A1624A2E600D18CD4 /* DDWAppDelegate.m */,
 				84076D0C1624A2E600D18CD4 /* TestController.xib */,
 				84076D0E1624A2E600D18CD4 /* VexDrawStoryboard.storyboard */,
 				843244741624C243004DAF43 /* data */,

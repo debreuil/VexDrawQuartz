@@ -65,7 +65,7 @@ CGColorSpaceRef colorSpace;
 {
     VexObject *result = [[VexObject alloc] init];
     
-    rawData = data.bytes;
+    rawData = (const unsigned char *)data.bytes;
     dataLen = data.length;
     [self parseTags:result];
     
@@ -534,10 +534,10 @@ CGColorSpaceRef colorSpace;
     unsigned int b = (afrgb & 0xFF);
     CGFloat components[4] =
     {
-        r / 255.0,        
-        g / 255.0,
-        b / 255.0,
-        a / 255.0,
+        r / 255.0f,
+        g / 255.0f,
+        b / 255.0f,
+        a / 255.0f,
     };
     CGColorRef c = CGColorRetain(CGColorCreate(colorSpace, components));
     return c;

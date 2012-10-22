@@ -1,13 +1,13 @@
 
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
+#import "Instance.h"
 
 @interface BasicSprite : NSObject
 
-@property (assign) GLKVector2 position;
-@property (assign) CGSize contentSize;
+@property (strong) Instance *instance;
 
-- (id)initWithImage:(CGImageRef)image effect:(GLKBaseEffect *)effect;
+//- (id)initWithImage:(CGImageRef)image effect:(GLKBaseEffect *)effect;
 - (void)render;
 
 
